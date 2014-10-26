@@ -1,0 +1,18 @@
+#starRating{
+	position:absolute;
+	float:left;
+	top:280px;
+	left:230px;
+}
+#starRating > img {
+	width:23px;
+	height:23px;
+	-webkit-filter: grayscale(100%);
+	cursor: pointer;
+	-webkit-transition: all .3s;
+}
+#starStat{
+	position:absolute;
+	top:320px;
+	left:210px;
+}

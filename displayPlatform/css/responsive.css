@@ -1,0 +1,123 @@
+body{
+	background-image:url(http://140.127.233.247/img/bg.png);
+	color:white;
+	font-family:微軟正黑體;
+	font-size:20;
+}
+#next{
+	position:absolute;
+	top:350px;
+	left:600px;
+}
+#previous{
+	position:absolute;
+	top:350px;
+	left:10px;
+}
+#spinCircle{
+	position:absolute;
+	top:250px;
+	left:-150px;
+	float:left;
+	-webkit-perspective:1000;
+	-webkit-perspective-origin: 100px 100px;
+	-webkit-transition: -webkit-transform 1.5s;
+	-webkit-transition: opacity .5s;
+	  
+	-webkit-animation-name:myfirst;
+	-webkit-animation-duration:6s;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-delay:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-play-state:running;
+
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst
+{
+0%   {-webkit-transform:rotateY(0 deg);}
+25%  {-webkit-transform:rotateY(90 deg);}
+50%  {-webkit-transform:rotateY(180 deg);}
+75%  {-webkit-transform:rotateY(270 deg);}
+100% {-webkit-transform:rotateY(360 deg);}
+}
+
+
+#extendText{
+	-webkit-transition: all 1s;
+	position:absolute;
+	top:50px;
+	left:50px;
+}
+#loading{
+	-webkit-transition: all 1s;
+	position:absolute;
+	left:200px;
+	top:200px;;
+}
+.on{
+	display:inline;
+}
+.off{
+	display:none;
+}
+
+
+#spinCircle figure{
+	position:absolute;
+	top:0px;
+	left:0px;
+*	opacity:.5;
+	 -webkit-transition: -webkit-transform 1s;
+	 -webkit-border-top-left-radius:15px;
+	-webkit-border-top-right-radius:15px;
+	-webkit-border-bottom-left-radius:15px;
+	-webkit-border-bottom-right-radius:15px;
+
+
+}
+
+#spinCircle img{
+	position:absolute;
+	-webkit-border-top-left-radius:15px;
+	-webkit-border-top-right-radius:15px;
+	-webkit-border-bottom-left-radius:15px;
+	-webkit-border-bottom-right-radius:15px;
+	width: 180px;
+	height: 240px;
+	-webkit-transform: scale(2.5,2.5);
+	
+}
+
+
+
+
+
+#extendInfo{
+	position:absolute;
+	top:100px;
+	right:50px;
+	width:900px;
+	height:600px;
+	-webkit-border-top-left-radius:15px;
+	-webkit-border-top-right-radius:15px;
+	-webkit-border-bottom-left-radius:15px;
+	-webkit-border-bottom-right-radius:15px;
+
+}
+
+
+#background{
+	width:100%;
+	height:100%;
+	-webkit-border-top-left-radius:15px;
+	-webkit-border-top-right-radius:15px;
+	-webkit-border-bottom-left-radius:15px;
+	-webkit-border-bottom-right-radius:15px;
+	background:black;
+	opacity:.5;
+	}
+	
+	
+

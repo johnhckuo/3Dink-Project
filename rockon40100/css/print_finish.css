@@ -1,0 +1,23 @@
+.P_top_image{
+	padding:60px 140px 60px 140px
+	}
+	
+.P_twobutton{
+	margin:30px auto 30px auto;
+	width:250px;
+	}
+	
+.P_twobutton_ul{
+	-webkit-padding-start:0px;
+	}
+	
+.P_twobutton_ul>li{
+	list-style:none;
+	}
+	
+.P_twobutton_ul>li>input{
+	font-size:20;
+	font-family: ·L³n¥¿¶ÂÅé;
+	width:250px;
+	margin:10px 10px 10px 10px
+	}

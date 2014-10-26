@@ -1,0 +1,66 @@
+<html>
+
+<head>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="utf-8">
+	<link rel=stylesheet type="text/css" href="css/fixbar.css">
+	<link rel="stylesheet" href="lib/bootstrap.min.css">
+	
+	<!-- 3rd party libs -->
+    <script src="lib/modernizr.custom.93389.js"></script><!--拿掉變白有選單能點GCODE-->
+    <script src="lib/jquery-1.7.1.min.js"></script>
+    <script src="lib/bootstrap-modal.js"></script>
+    <script src="lib/sugar-1.2.4.min.js"></script>
+    <script src="lib/three.js"></script>
+    <script src="lib/TrackballControls.js"></script>
+
+    <script src="js/ShaderExtras.js"></script><!--拿掉變白點G code沒東西 -->
+    <script src="js/postprocessing/EffectComposer.js"></script>
+    <script src="js/postprocessing/MaskPass.js"></script>
+    <script src="js/postprocessing/RenderPass.js"></script>
+    <script src="js/postprocessing/ShaderPass.js"></script>
+    <script src="js/postprocessing/BloomPass.js"></script>
+
+    <script src="js/Stats.js"></script><!--拿掉變白點G code沒東西 -->
+    <script src="js/DAT.GUI.min.js"></script>
+    <!-- Custom code -->
+    <script type="text/javascript" src="gcode_model.js"></script><!--拿掉有選單能點GCODE-->
+    <script type="text/javascript" src="gcode_parser.js"></script>
+    <script type="text/javascript" src="gcode_interpreter.js"></script>
+    <script type="text/javascript" src="gcode_importer.js"></script>
+    <script type="text/javascript" src="gcode_renderer.js"></script>
+    <script type="text/javascript" src="renderer.js">var x = new $();</script><!--拿掉變白有選單能點GCODE-->
+
+
+</head>
+
+
+<body style="overflow-x: hidden;background-image:url(img/bg.png); ">
+
+	<div class="navbar navbar-fixed-top" >
+      <div class="navbar-inner" >
+	  <span class="brand" href="#" ><img src="./img/3D-ink_transparent.png"></img></span>
+        <div class="navcontainer" >
+			<ul class="nav searchbox">
+				<li><input type="text"  placeholder="搜尋"></li>
+			</ul>  
+	    </div>
+      </div>
+    </div>
+	
+	<div id="renderArea"></div>
+
+    <form class="gcode_examples" enctype="multipart/form-data" method="post" action="upload.php">
+		<div class="row">
+			<!--<label for="fileToUpload">Select a File to Upload</label><br />-->
+			<input type="file" name="fileToUpload" id="fileToUpload" />
+		</div>
+			<div class="row">
+			<input type="button"  value="Upload" />
+		</div>
+	</form>
+	
+	
+</body>
+<script src="ui.js"></script>
+</html>

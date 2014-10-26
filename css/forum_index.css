@@ -1,0 +1,92 @@
+﻿.middle{
+width:975px;
+margin-top:50px;
+margin-left:auto;
+margin-right:auto;
+}
+ul{
+padding:0px;
+}
+#ex {	
+margin-top:8%;
+margin-left:0px;
+list-style: none;
+}
+
+#ex li {
+display: block;
+float: left;
+margin: 0 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+
+}
+
+#ex a {
+width:163px;
+display: block;
+padding: 18px 35px;
+font-family:Arial, sans-serif;
+font-size: 1.2em;
+font-weight: bold;
+color: #fff;
+text-decoration: none;
+text-shadow: 1px 1px 1px #666;
+text-align:center;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+-webkit-transition: background 0.3s linear;
+-moz-transition: background 0.3s linear;
+-o-transition: background 0.3s linear;
+transition: background 0.3s linear;
+
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(219, 219, 219, 0)', endColorstr='rgba(76, 76, 76, 0.55)');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(35%, rgba(219, 219, 219, 0)), color-stop(75%, rgba(76, 76, 76, 0.55)) );
+border:0px;
+}
+#ex a:hover {
+background: rgba(34, 83, 118, 0.55);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(249, 250, 158, 0.5)', endColorstr='rgba(76, 76, 76, 0.55)');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(10%, rgba(246, 247, 109, 0.3)), color-stop(50%, rgba(76, 76, 76, 0.3)) );
+border:0px;
+}
+
+.float {
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+}
+
+.float:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+.up{
+width:975px;
+height:480px;
+background-image:url(../../img/forumpic1.jpg);
+margin-left:auto;
+margin-right:auto;
+}
+.bottom{
+width:975px;
+margin-top:50px;
+margin-left:auto;
+margin-right:auto;
+}
+th{
+text-align:left;
+padding-left:38px;
+padding-right:38px;
+padding-top:20px;
+color:#bfbfbf;
+font-family:微軟正黑體;
+margin: 0 5px;
+width:244px;
+vertical-align:top;
+}

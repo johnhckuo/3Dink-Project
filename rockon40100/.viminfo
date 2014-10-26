@@ -1,0 +1,472 @@
+# 本 viminfo 檔案是由 Vim 7.2 所產生.
+# 如果想要自行修改請特別小心！
+
+# 'encoding' 在此檔建立時的值
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# 命令列 歷史記錄 (新到舊):
+:q!
+:x
+:X
+:set nu
+:num
+:nu
+
+# 搜尋字串 歷史記錄 (新到舊):
+
+# 運算式 歷史記錄 (新到舊):
+
+# 輸入行  歷史記錄 (新到舊):
+
+# 輸入行  歷史記錄 (新到舊):
+
+# 暫存器:
+"1	LINE	0
+		else if()
+"2	LINE	0
+		else if()
+"3	LINE	0
+					<li><input type='submit' name="sent" id='sent' value='送出' "></li>
+"4	LINE	0
+				<ul class="filltextbutton">
+"5	LINE	0
+		echo $receiverAddress;
+"6	LINE	0
+		echo $receiverName;
+"7	LINE	0
+		echo $_POST['receiverAddress'];
+"8	LINE	0
+		echo $_POST['receiverName'];
+"9	LINE	0
+		echo $a;
+""-	CHAR	0
+	"
+
+# 檔案標記:
+'0  1  0  /var/www/fillin_insert.php
+'1  37  1  /var/www/print_fillin.html
+'2  28  3  /var/www/zhen/login_success.php
+'3  23  18  /var/www/zhen/login_success.php
+'4  1  0  ~/print_fillin.html
+'5  36  0  /var/www/print_fillin.html
+'6  1  0  /var/www/print_fillin.php
+'7  16  0  /var/www/check_insert.js
+'8  54  46  /var/www/print_fillin.html
+'9  44  46  /var/www/print_fillin.html
+
+# Jumplist (由新到舊):
+-'  1  0  /var/www/fillin_insert.php
+-'  37  1  /var/www/print_fillin.html
+-'  1  1  /var/www/print_fillin.html
+-'  28  3  /var/www/zhen/login_success.php
+-'  1  0  /var/www/zhen/login_success.php
+-'  23  18  /var/www/zhen/login_success.php
+-'  1  0  ~/print_fillin.html
+-'  36  0  /var/www/print_fillin.html
+-'  1  0  /var/www/print_fillin.php
+-'  16  0  /var/www/check_insert.js
+-'  1  0  /var/www/check_insert.js
+-'  54  46  /var/www/print_fillin.html
+-'  44  46  /var/www/print_fillin.html
+-'  59  68  /var/www/print_fillin.html
+-'  8  0  /var/www/check_insert.js
+-'  5  125  /var/www/check_insert.js
+-'  69  0  /var/www/print_fillin.html
+-'  58  0  /var/www/print_fillin.html
+-'  1  0  /var/www/asd.php
+-'  60  0  /var/www/print_fillin.html
+-'  9  0  /var/www/asd.php
+-'  4  7  /var/www/asd.php
+-'  5  5  /var/www/asd.php
+-'  11  5  /var/www/asd.php
+-'  15  0  /var/www/print_fillin.html
+-'  10  5  /var/www/check_insert.js
+-'  6  36  /var/www/print_fillin.html
+-'  7  0  /var/www/check_insert.js
+-'  17  0  /var/www/check_insert.js
+-'  19  18  /var/www/fillin_insert.php
+-'  27  1  /var/www/register_finish.php
+-'  1  0  /var/www/register_finish.php
+-'  31  8  /var/www/register_finish.php
+-'  16  0  /var/www/fillin_insert.php
+-'  15  33  /var/www/fillin_insert.php
+-'  14  98  /var/www/fillin_insert.php
+-'  2  0  /var/www/fillin_insert.php
+-'  9  83  /var/www/fillin_insert.php
+-'  8  4  /var/www/fillin_insert.php
+-'  20  1  /var/www/register_finish.php
+-'  13  0  /var/www/fillin_insert.php
+-'  10  0  /var/www/fillin_insert.php
+-'  6  1  /var/www/fillin_insert.php
+-'  4  32  /var/www/fillin_insert.php
+-'  22  0  /var/www/register_finish.php
+-'  39  1  /var/www/print_fillin.html
+-'  53  0  /var/www/print_fillin.html
+-'  24  22  /var/www/fillin_insert.php
+-'  1  0  /var/www/fillin_insert.html
+-'  42  10  /var/www/print_fillin.html
+-'  45  4  /var/www/print_fillin.html
+-'  12  6  /var/www/fillin_insert.php
+-'  67  0  /var/www/print_fillin.html
+-'  1  0  /var/www/print_upload.html
+-'  1  0  /var/www/print_upload.php
+-'  1  0  /var/www/upload.php
+-'  17  0  /var/www/print_fillin.php
+-'  17  36  /var/www/print_upload.html
+-'  13  46  /var/www/print_upload.html
+-'  25  0  /var/www/print_upload.html
+-'  22  0  /var/www/print_fillin.php
+-'  1  0  /var/www/fillin.php
+-'  1  0  /var/www/upload.html
+-'  1  0  /var/www/upload.
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  1  0  /var/www/upload.
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  1  0  /var/www/upload.html
+-'  1  0  /var/www/upload.
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/index.html
+-'  25  14  /var/www/index.html
+-'  1  0  /var/www/asd.php
+-'  9  0  /var/www/asd.php
+-'  4  7  /var/www/asd.php
+-'  5  5  /var/www/asd.php
+-'  11  5  /var/www/asd.php
+-'  9  5  /var/www/check_insert.js
+-'  1  0  /var/www/asd.php
+-'  9  0  /var/www/asd.php
+-'  4  7  /var/www/asd.php
+-'  16  0  /var/www/check_insert.js
+-'  1  0  /var/www/check_insert.js
+
+# 檔案內 Mark 記錄 (由新到舊):
+
+> /var/www/fillin_insert.php
+	"	1	0
+	^	19	19
+	.	19	18
+	+	1	5
+	+	25	0
+	+	7	1
+	+	4	1
+	+	6	0
+	+	4	18
+	+	4	18
+	+	25	1
+	+	9	28
+	+	10	7
+	+	10	0
+	+	10	65
+	+	10	85
+	+	15	0
+	+	10	98
+	+	15	0
+	+	25	0
+	+	10	110
+	+	10	1
+	+	14	0
+	+	10	32
+	+	12	32
+	+	13	36
+	+	11	24
+	+	12	24
+	+	13	39
+	+	12	6
+	+	10	31
+	+	11	25
+	+	12	27
+	+	13	59
+	+	12	1
+	+	13	0
+	+	12	1
+	+	13	35
+	+	11	2
+	+	10	2
+	+	12	12
+	+	13	13
+	+	14	165
+	+	16	20
+	+	24	22
+	+	16	1
+	+	16	0
+	+	16	6
+	+	6	2
+	+	9	30
+	+	14	2
+	+	15	35
+	+	16	1
+	+	16	0
+	+	16	1
+	+	16	0
+	+	16	7
+	+	16	8
+	+	16	1
+	+	16	0
+	+	16	7
+	+	10	1
+	+	11	1
+	+	12	1
+	+	13	1
+	+	16	0
+	+	10	1
+	+	11	1
+	+	12	1
+	+	13	1
+	+	10	15
+	+	1	0
+	+	10	15
+	+	11	18
+	+	12	14
+	+	13	20
+	+	16	19
+	+	4	1
+	+	5	0
+	+	4	1
+	+	14	1
+	+	15	33
+	+	9	28
+	+	6	1
+	+	8	12
+	+	14	93
+	+	8	12
+	+	9	23
+	+	1	68
+	+	14	7
+	+	14	107
+	+	14	98
+	+	14	94
+	+	16	0
+	+	22	0
+	+	16	11
+	+	20	9
+	+	16	0
+	+	17	8
+	+	18	16
+	+	19	16
+	+	20	0
+	+	19	18
+
+> /var/www/print_fillin.html
+	"	37	1
+	^	44	47
+	.	45	77
+	+	66	0
+	+	42	61
+	+	43	0
+	+	55	4
+	+	45	4
+	+	55	4
+	+	45	4
+	+	45	3
+	+	45	20
+	+	55	37
+	+	44	51
+	+	45	53
+	+	45	45
+	+	45	43
+	+	55	4
+	+	46	48
+	+	45	0
+	+	45	4
+	+	45	5
+	+	45	5
+	+	45	5
+	+	45	6
+	+	45	6
+	+	45	6
+	+	45	5
+	+	45	6
+	+	45	5
+	+	45	4
+	+	45	3
+	+	45	19
+	+	45	15
+	+	45	15
+	+	45	16
+	+	45	24
+	+	45	24
+	+	45	25
+	+	55	0
+	+	45	0
+	+	46	4
+	+	54	3
+	+	52	37
+	+	44	42
+	+	59	89
+	+	45	55
+	+	47	59
+	+	54	56
+	+	44	74
+	+	54	92
+	+	69	0
+	+	54	148
+	+	45	144
+	+	54	131
+	+	44	146
+	+	58	0
+	+	59	4
+	+	60	3
+	+	59	52
+	+	6	36
+	+	59	0
+	+	59	0
+	+	59	0
+	+	44	74
+	+	45	77
+
+> /var/www/zhen/login_success.php
+	"	28	3
+	^	23	19
+
+> ~/print_fillin.html
+	"	1	0
+
+> /var/www/print_fillin.php
+	"	1	0
+	^	17	1
+	.	17	1
+	+	21	2
+	+	16	8
+	+	17	1
+
+> /var/www/check_insert.js
+	"	16	0
+	^	16	0
+	.	8	1
+	+	17	0
+	+	15	1
+	+	1	0
+	+	2	0
+	+	3	0
+	+	4	0
+	+	5	0
+	+	6	1
+	+	7	1
+	+	9	1
+	+	3	0
+	+	10	1
+	+	10	0
+	+	11	0
+	+	12	1
+	+	14	0
+	+	10	0
+	+	5	107
+	+	5	125
+	+	8	1
+
+> /var/www/asd.php
+	"	1	0
+	^	4	8
+	.	9	0
+	+	1	5
+	+	17	0
+	+	12	7
+	+	15	0
+	+	13	1
+	+	12	11
+	+	13	5
+	+	14	9
+	+	13	6
+	+	11	5
+	+	9	1
+	+	4	19
+	+	2	4
+	+	4	9
+	+	5	1
+	+	6	0
+	+	5	5
+	+	4	6
+	+	3	4
+	+	4	0
+	+	2	0
+	+	1	0
+	+	3	0
+	+	5	0
+	+	6	0
+	+	7	0
+	+	9	0
+
+> /var/www/register_finish.php
+	"	27	1
+
+> /var/www/fillin_insert.html
+	"	1	0
+
+> /var/www/print_upload.html
+	"	1	0
+	^	1	0
+	.	17	33
+	+	25	2
+	+	25	0
+	+	3	6
+	+	23	5
+	+	5	6
+	+	8	7
+	+	10	5
+	+	21	0
+	+	20	5
+	+	12	0
+	+	6	16
+	+	12	47
+	+	13	56
+	+	14	51
+	+	16	49
+	+	15	43
+	+	16	43
+	+	15	46
+	+	16	28
+	+	15	31
+	+	25	0
+	+	13	8
+	+	14	5
+	+	15	5
+	+	16	37
+	+	15	40
+	+	14	42
+	+	13	47
+	+	17	1
+	+	18	0
+	+	17	33
+
+> /var/www/print_upload.php
+	"	1	0
+
+> /var/www/upload.php
+	"	1	0
+
+> /var/www/fillin.php
+	"	1	0
+	^	1	68
+	.	1	0
+	+	20	1
+	+	18	0
+	+	16	1
+	+	3	0
+	+	1	0
+
+> /var/www/upload.html
+	"	1	0
+
+> /var/www/upload.
+	"	1	0
+
+> /var/www/index.html
+	"	25	14
+	^	4	8

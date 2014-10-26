@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>city</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="city.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#select_add1").citySelect({cityTraget:"p_adds1"});
+	$("#select_add2").citySelect({cityTraget:"p_adds2"});
+})
+</script>
+</head>
+<body>
+      <table border="0" width="600" id="table">
+        <tr>
+          <td>住址(一)</td>
+          <td><span id="select_add1"></span><input type="text" name="p_adds1" id="p_adds1" size="40" /></td>
+        </tr>
+        <tr>
+          <td>住址(二)</td>
+          <td><span id="select_add2"></span><input type="text" name="p_adds2" id="p_adds2" size="40" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><input type="button" value="送出" name="submit" id="submitButton" /></td>
+        </tr>
+      </table>
+</body>
+</html>

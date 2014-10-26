@@ -1,0 +1,77 @@
+.P_top_image{
+	padding:60px 140px 60px 140px
+	}
+	
+.P_outside>div{
+	display:inline-block;
+	margin:20px 20px 50px 20px
+	}
+	
+.P_left{
+	position:relative;
+	left:15%;
+	border-style:solid;
+	width:400;
+	height:300;
+	}
+	
+.P_right{
+	position:relative;
+	float:right;
+	right:30%
+	}
+	
+.P_right_span{
+	font-size:25;
+	font-family: 微軟正黑體;
+	font-weight:bold;
+	}
+	
+.P_right_content_top{
+	list-style:none;
+	font-family: 微軟正黑體;
+	}
+	
+.P_right_content_mid{
+	list-style:none;
+	font-family: 微軟正黑體;
+	}
+	
+.P_right_content_buttom{
+	list-style:none;
+	font-family: 微軟正黑體;
+	}
+	
+.P_bottom{
+<<<<<<< HEAD
+	width:400px;
+=======
+	width:350px;
+>>>>>>> dd15561fa97ccc9e697410770e74215f970e39f8
+	margin-left:auto;
+	margin-right:auto;
+	}
+	
+.P_bottom_button{
+	list-style:none;
+<<<<<<< HEAD
+	
+	}
+	
+.P_bottom_button>li{
+	display:inline;
+
+=======
+	}
+	
+.P_bottom_button>li{
+	display:inline
+>>>>>>> dd15561fa97ccc9e697410770e74215f970e39f8
+	}
+	
+.P_bottom_button>li>a>input{
+	margin-left:50px;
+	margin-right:50px;
+	font-family: 微軟正黑體;
+	font-size:20px;
+	}

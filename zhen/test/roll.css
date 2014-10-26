@@ -1,0 +1,271 @@
+
+			.container {
+			  width: 210px;
+			  height: 140px;
+			  position: relative;
+			  margin: 0px 250px;
+			  top:150px;
+			  left:10px;
+			  -webkit-perspective: 400px;
+			  -webkit-perspective-origin: 70% 75%;
+			}
+			/*
+			#viewer3D{
+				position:absolute;
+				top:-50px;
+				left:-150px;
+				height:300px;
+				width:500px;
+				-webkit-transition:all 1s;
+				display:none;
+				opacity:0;
+				-webkit-border-top-left-radius:5px;
+				-webkit-border-top-right-radius:5px;
+				-webkit-border-bottom-left-radius:5px;
+				-webkit-border-bottom-right-radius:5px;
+			*	background:gray;
+				
+			}*/
+			#next{
+				position:absolute;
+				top:-180px;
+				right:-90px;
+				cursor:pointer;
+			}
+			#previous{
+				position:absolute;
+				top:-180px;
+				left:-220px;
+				cursor:pointer;
+				
+			}
+			#carousel{
+				-webkit-transition : all 1s;
+				-webkit-transform-origin:10px 10px;
+				-webkit-transform-style: preserve-3d;
+			}
+			#carousel figure {
+			
+				-webkit-transform-style: preserve-3d;
+				display: block;
+				position: absolute;
+				width: 270px;
+				height: 360px;
+				left: 10px;
+				top: 10px;
+				line-height: 30px;
+				font-size: 80px;	
+				color: white;
+				text-align: center;
+				margin: 0px auto;
+				-webkit-border-top-left-radius:1px;
+				-webkit-border-top-right-radius:1px;
+				-webkit-border-bottom-left-radius:1px;
+				-webkit-border-bottom-right-radius:1px;
+				z-index:0;
+			}  
+
+			
+	
+			  #options{
+				position:absolute;
+				top:400px;
+				left:50%;
+				width:200px;
+				}
+			  
+			#options{
+				position:absolute;
+				margin:0 auto 70px;
+				z-index:1;
+			}
+			figure>img{
+			*	-webkit-filter: grayscale(1);
+				position: absolute;
+				width: 270px;
+				height: 360px;
+				top: 0;
+				left: 0;
+				-webkit-transition: all .5s ease;
+				-webkit-border-top-left-radius:1px;
+				-webkit-border-top-right-radius:1px;
+				-webkit-border-bottom-left-radius:1px;
+				-webkit-border-bottom-right-radius:1px;
+		
+				
+			}
+			img:hover{
+		*	-webkit-filter: grayscale(0);
+		*	  -webkit-transform: scale(1.2,1.2);
+			}
+			body{
+			background:black;
+			}
+			/*
+			.opa{
+				opacity:.3;
+			}
+			.nonopa{
+				opacity:1;
+			}
+			.middleopa{
+				opacity:.6;
+			}*/
+			#info{
+				position:absolute;
+				top:130px;
+				right:150px;
+				width:500px;
+				height:500px;
+				background:gray;
+				-webkit-transition: all .5s;
+				color:white;
+				font-family:微軟正黑體;
+				padding-top:50px;
+				padding-left:50px;
+				padding-right:50px;
+				z-index:0;
+				display:none;
+			}
+			
+			
+			
+			#carousel figure span{
+	*			-webkit-border-bottom-left-radius:15px;
+	*			-webkit-border-bottom-right-radius:15px;
+				-webkit-transform-style: preserve-3d;
+				-webkit-transition: all 1s;
+				position: absolute;
+				width: 100%;
+				height: 30px;
+				left: 0px;
+				bottom: 0px;
+				display:inline;
+				background:black;
+				*opacity:.8;
+				font-family: verdana;
+				font-size:12px;
+	
+			}
+			
+			.off{
+				display:none;
+			}
+			.on{
+				display:inline;
+			}
+			#extendInfo{
+				position: absolute;
+				top:150px;
+				left:10px;
+				-webkit-border-top-left-radius:15px;
+				-webkit-border-top-right-radius:15px;
+				-webkit-border-bottom-left-radius:15px;
+				-webkit-border-bottom-right-radius:15px;
+				height:450px;
+				width:350px;
+				-webkit-transition:all 1.5s;
+				background:yellow;
+				opacity:0;
+				
+				-webkit-transform-origin: right center;
+				z-index:100;
+			}
+			
+			figure:hover #extendInfo{	
+				position: absolute;
+				opacity:1;
+				-webkit-transform:rotateY(180deg);
+				z-index:100;
+			}
+		/*
+			.infoHover {
+				-webkit-transform:translateX(100px) ;
+				opacity : .8;
+			}
+			.infoHoverOut{
+				-webkit-transform:translateX(0px);
+				opacity : 0;
+			}*/
+			#parts{
+				position:absolute;
+				bottom:0px;
+				left:0px;
+				height:300px;
+				-webkit-transition: all 1s;
+				background:gray;
+				opacity:0;
+				padding-right:20px;
+				padding-left:20px;
+				padding-top:20px;
+				padding-bottom:20px;
+				display:inline;
+				overflow-x: scroll;
+				overflow-y: hidden;
+			}
+			#parts img{
+				cursor:pointer;
+				width:150px;
+				height:150px;
+				
+			}
+			#Fold{
+				position:absolute;
+				top:700px;
+				right:300px;
+			}
+			#carousel figure>div{
+				position:absolute;
+				float:left;
+				top:5px;
+				right:5px;
+				z-index:1;
+				width:30px;
+				height:10px;
+				opacity:0;
+				-webkit-transition:all 1s;
+			}
+			
+			.option{
+				width:30px;
+				height:30px;
+				cursor: pointer;
+				-webkit-transition:all .5s;
+				opacity:0.5;
+			}
+			.option:hover{
+				opacity:1;
+			}
+			.option img{
+				width:100%;
+				height:100%;
+			} 
+			
+			#tempBox{
+				position:absolute;
+				top:0px;
+				left:-80px;
+			}
+			
+			.tempPrint{
+				width: 80px;
+				height: 80px;
+				cursor: pointer;
+				-webkit-transition: all .5s;
+			}
+			.tempCube{
+				width: 80px;
+				height: 80px;
+				cursor: pointer;
+				-webkit-transition: all .5s;
+			}
+			
+			.tempCube img{
+				width:100%;
+				height:100%;
+			}
+			
+			.tempPrint img{
+				width:100%;
+				height:100%;
+			}

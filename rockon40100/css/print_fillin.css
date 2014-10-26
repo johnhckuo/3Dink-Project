@@ -1,0 +1,48 @@
+.top-image{
+	padding:60px 140px 60px 140px
+	}
+
+.formarea{
+	border-style:solid;
+	width:450px;
+	margin-right:auto;
+	margin-left:auto;
+	text-align:center;
+	padding:30px 10px 10px 10px;
+	font-size:30px;
+	}
+
+.toptext{
+	font-family: 微軟正黑體;
+	font-weight:bolder
+	}
+
+.filltextbar{
+	list-style:none;
+	font-size:20px;
+	font-family: 微軟正黑體;
+	}
+
+.filltextbar>li>input{
+	font-size:20px;
+	font-family: 微軟正黑體;
+	margin:10px 10px 10px 10px
+	}
+	
+.filltextbutton{
+	list-style:none;
+	}
+	
+.filltextbutton>li{
+	display:inline
+	}
+	
+.filltextbutton>li>input{
+	font-size:20px;
+	font-family: 微軟正黑體;
+	}
+	
+.filltextbutton>li>a>input{
+	font-size:20px;
+	font-family: 微軟正黑體;
+	}

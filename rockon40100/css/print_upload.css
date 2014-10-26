@@ -1,0 +1,61 @@
+.P_top_image{
+	padding:60px 140px 60px 140px
+	}
+	
+.P_upload{
+	padding-top:30px;
+	margin-left:auto;
+	margin-right:auto;
+	width:750px;
+	height:250px;
+	background:#E6DEEE;
+	}
+	
+.P_uploadfile{
+	list-style:none;
+	margin:100px 220px 100px 220px;
+	-webkit-padding-start:0px;
+	font-family: 微軟正黑體;
+	}
+	
+.P_uploadfile>li{
+	display:inline;
+	font-size:30px;
+	font-weight: bold;
+	}
+	
+.P_uploadfile>li>input{
+	font-size:30px;
+	font-family: 微軟正黑體;
+	}
+	
+.P_bottomtext{
+	list-style:none;
+	position:relative;
+	left:20%
+	}
+	
+.P_bottomtext>li{
+	font-size:20;
+	font-family: 微軟正黑體;
+	}
+	
+.P_bottombutton{
+	list-style:none;
+	position:relative;
+	left:19%;
+	margin-top:60px;
+	margin-left:20%;
+	-webkit-padding-start:0px;
+	}
+	
+.P_bottombutton>li{
+	display:inline
+	}
+	
+.P_bottombutton>li>a>input{
+	margin-left:50px;
+	margin-right:50px;
+	font-size:20;
+	font-family: 微軟正黑體;
+	}

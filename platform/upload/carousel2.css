@@ -1,0 +1,73 @@
+.container{
+	margin: 4% auto;
+	width: 210px;
+	height: 140px;
+	position: absolute;
+	left:100px;
+	top:50px;
+	-webkit-perspective: 700;
+}
+#carousel{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:  -webkit-transform 1s;
+}
+
+#carousel figure{
+	display: block;
+	position: absolute;
+	width: 186px;
+	height: 116px;
+	left: 10px;
+	top: 10px;
+	background: black;
+	overflow: hidden;
+	border: solid 5px black;
+	
+}
+#carousel figure:nth-child(1){
+position:absolute;
+top:10px;
+-webkit-transform:rotateY(-60deg) translateZ(200px);
+}
+#carousel figure:nth-child(2){
+position:absolute;
+top:100px;
+-webkit-transform:rotateY(0deg) translateZ(200px);
+}
+
+#carousel figure:nth-child(3){
+position:absolute;
+top:10px;
+-webkit-transform:rotateY(60deg) translateZ(200px);
+}
+
+#carousel figure:nth-child(4){
+position:absolute;
+top:10px;
+left:400px;
+}
+#carousel figure:nth-child(5){
+position:absolute;
+top:10px;
+left:650px;
+}
+#carousel figure:nth-child(6){
+position:absolute;
+top:10px;
+left:900px;
+}
+
+
+img{
+	-webkit-filter: grayscale(1);
+	cursor: pointer;
+	-webkit-transition: all .5s ease;
+}
+img:hover{
+	-webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.2,1.2);
+}
+

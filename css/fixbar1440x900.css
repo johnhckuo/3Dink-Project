@@ -1,0 +1,54 @@
+.platformlink{
+	position:absolute;
+	top:1275px;
+	left:71.5%;
+	margin-left:10px;
+
+	}
+
+.platformlink>a>img{
+	opacity:0;
+	width:240px;
+	height:120px;
+	}
+
+.printlink{
+	position:absolute;
+	top:1640px;
+	left:16%;
+	margin-left:10px;
+
+	}
+
+.printlink>a>img{
+	opacity:0;
+	width:1120px;
+	height:120px;
+	}
+
+.forumlink{
+	position:absolute;
+	top:2240px;
+	left:43%;
+	margin-left:10px;
+
+	}
+
+.forumlink>a>img{
+	opacity:0;
+	width:180px;
+	height:120px;
+	}
+.ads_purchase{
+	position: absolute;
+	top: 2906;
+	left: 65.5%;
+	}
+.ads_purchase>a{
+	color:#ffffff;
+	text-decoration:none;
+	font-family: Microsoft JhengHei;
+	font-size: 16px;
+	font-weight: bold;
+	opacity: 0.9;
+	}

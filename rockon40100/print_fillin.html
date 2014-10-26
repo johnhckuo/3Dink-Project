@@ -1,0 +1,68 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<html>
+
+<head>
+	<title>填寫表單</title>
+	<script type="text/javascript" src="js/check_insert.js"></script>
+	<link rel=stylesheet type="text/css" href="css/fixbar.css">
+	<link rel=stylesheet type="text/css" href="css/print_fillin.css">
+
+</head>	
+
+<body>	
+	<div class="navbar navbar-fixed-top" >
+      <div class="navbar-inner" >
+        <div class="navcontainer" >
+		<ul class="nav">
+            <li><a><input type="text"></a></li>
+            <li><a href="">搜尋</a></li>
+          </ul>
+		  <span class="brand" href="#" >Logo</span>
+          <ul class="nav pull-right">
+            <li><a href="login.php" target="_blank">註冊</a></li>
+            <li><a href="register.html" target="_blank">登入</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+	<div class="top-image">
+<<<<<<< HEAD
+		<img src="img/print3.png">
+=======
+		<img src="./print3.png">
+>>>>>>> dd15561fa97ccc9e697410770e74215f970e39f8
+	</div>
+	<div class="formarea">
+		<span class="toptext">請填寫以下資料</span>
+		<div class="form">
+		 <form name="fillin" method="POST" action="fillin_insert.php">
+            <ul class="filltextbar">
+<<<<<<< HEAD
+                <li>收件人<input type="text" name="receiverName" id="receiverName"></li>
+				<li>地址<input type='text' name="receiverAddress" id='receiverAddress' ></li>
+=======
+                <li>收件人<input type="text" name="receiverName" id="receiverName" ></li>                                <li>地址<input type='text' name="receiverAddress" id='receiverAddress' ></li>
+>>>>>>> dd15561fa97ccc9e697410770e74215f970e39f8
+                <li>郵遞區號
+                <select id="receiverZip" name="receiverZip">
+                    <option>暫時沒有</option>
+                    <option>暫時沒有</option>
+					<option >暫時沒有</option>
+                </select>
+                </li>
+				<li>電話<input type='text' name="receiverTelephone" id='receiverTelephone' onchange="this.value=this.value.replace(/[0-9]/g)"></li>
+            </ul>
+            <ul class="filltextbutton">
+                <li><input type='submit'id='sent' value='送出' onClick="return check_insert();"></li>
+                <li><a href="index.php"><input type="submit" value="取消"></a></li>
+            </ul>
+        </form>
+		</div>
+	</div>
+</body>
+
+</html>
+
+
+   

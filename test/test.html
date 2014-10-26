@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>My first Three.js app</title>
+		<style>canvas { width: 100%; height: 100% }</style>
+	</head>
+	<body>
+		<script src="three.min.js"></script>
+		<script src="fonts/helvetiker_bold.typeface.js"></script>
+		<script src="fonts/helvetiker_regular.typeface.js"></script>
+		<script>
+		
+			
+			var Texture = new THREE.ImageUtils.loadTexture("binary.jpg");
+		
+			var temp = new THREE.FogExp2({ color: 0xffffff },0.00025);
+			var scene = new THREE.Scene(temp);
+			var cube = new Array();
+			var bound=5000;
+			
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, bound );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			
+			for (var i =0 ; i <1000 ;  i++){
+			
+				var geometry = new THREE.BoxGeometry(100,100,100);
+				
+
+				var cubeMaterial = new THREE.MeshLambertMaterial({ map:Texture });
+               
+
+				cube[i] = new THREE.Mesh( geometry, cubeMaterial );
+				cube[i].position.x += (Math.random()*window.innerWidth)+1;
+				cube[i].position.y += (Math.random()*window.innerHeight)+1;
+				cube[i].position.z += (Math.random()*bound)+1;
+				scene.add( cube[i] );
+				
+			}
+			
+			
+			 var theText = "3D ink Test";
+
+  var text3d = new THREE.TextGeometry( theText, {
+    size: 80,
+    height: 80,
+    curveSegments: 2,
+    font: "helvetiker",
+    weight: "bold"
+  });
+
+
+
+  var textMaterial = new THREE.MeshNormalMaterial;
+  text = new THREE.Mesh( text3d, textMaterial );
+  text.position.x = 0;
+  text.position.y = 0;
+  text.position.z = 0;
+  text.rotation.x = 0;
+  text.rotation.y = Math.PI * 2;
+  
+  scene.add(text);
+			
+			
+			
+			camera.position.x = window.innerWidth/2;
+			camera.position.y = window.innerHeight/2;
+			camera.position.z = bound;
+			
+			
+			function render(){
+				for (var i=0;i<1000;i++){
+					if (cube[i].position.z<=0.1)
+						cube[i].position.z += bound;
+					cube[i].position.z -= 20;
+				}
+				renderer.render(scene,camera);
+				requestAnimationFrame(render);
+			}
+			
+			render();
+		</script>
+	</body>
+</html>

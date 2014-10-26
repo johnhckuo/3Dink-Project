@@ -1,0 +1,106 @@
+<html>
+<meta charset="utf-8" />
+<head>
+	<title>首頁</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=0" />
+	<link rel=stylesheet type="text/css" href="css/fixbar.css">
+	<link rel=stylesheet type="text/css" href="css/platform.css">
+	<link rel=stylesheet type="text/css" href="css/uploadbar.css">
+</head>
+<body style="overflow-x: hidden;" >
+<div id="mask">
+	<div class="navbar navbar-fixed-top" >
+      <div class="navbar-inner" >
+        <div class="navcontainer" >
+		<ul class="nav">
+            <li><a><input type="text"></a></li>
+            <li><a href="">搜尋</a></li>
+          </ul>
+		  <span class="brand" href="#" >Logo</span>
+          <ul class="nav pull-right">
+            <li><a href="login.php" target="_blank">登入</a></li>
+            <li><a href="register.html" target="_blank">註冊</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<div id="gallery" >
+	<img id="img0" onclick="picScale(this.id);" src="img/pic1.jpg"  ></img>
+	<img id="img1" onclick="picScale(this.id);" src="img/pic2.jpg" ></img>
+	<img id="img2" onclick="picScale(this.id);" src="img/pic3.jpg" ></img>
+	<img id="img3" onclick="picScale(this.id);" src="img/pic4.jpg" ></img>
+	<img id="img4" onclick="picScale(this.id);" src="img/pic5.jpg" ></img>
+	<img id="img5" onclick="picScale(this.id);" src="img/pic6.jpg" ></img>
+	<img id="img6" onclick="picScale(this.id);" src="img/pic7.jpg" ></img>
+	<img id="img7" onclick="picScale(this.id);" src="img/pic8.jpg" ></img>
+    <img id="img8" onclick="picScale(this.id);" src="img/pic9.jpg" ></img>
+	<img id="img9" onclick="picScale(this.id);" src="img/pic10.jpg" ></img>
+	<img id="img10" onclick="picScale(this.id);" src="img/pic11.jpg" ></img>
+	<img id="img11" onclick="picScale(this.id);" src="img/pic12.jpg" ></img>
+</div>
+<div id="loadingIMG1" class="off"><img src="loading.gif" height='5%' width='7.5%'/></div>
+<div id="nextGallery" ><a href="#" onclick="loadXMLFile(1); " ><img src="img/next.png"  width="50" height="50"/> </a></div>
+<div id="previousGallery" class="off"><a href="#" onclick="loadXMLFile(-1);"><img src="img/previous.png"  width="50" height="50"/> </a></div>
+
+
+<div id="typeSelector" >
+	<select size=20 name="selector" autofocus>
+		<option value="type0" /> 選項一
+		<option value="type1" selected />選項二
+		<option value="type2" />選項三
+	</select>
+</div>
+
+
+
+
+
+<div id="uploadForm"
+	<form id="form1" enctype="multipart/form-data" method="post" action="upload.php">
+    <div class="row">
+      <label for="fileToUpload">Select a File to Upload</label><br />
+      <input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+    </div>
+    <div id="fileName"></div>
+    <div id="fileSize"></div>
+    <div id="fileType"></div>
+    <div class="row">
+		<input type="button" onclick="uploadFile()" value="Upload" />
+    </div>
+
+
+	<div id="bar_blank">
+		<div id="bar_color">
+			<div id="progressNumber"></div>
+		</div>
+	</div>
+
+  </form>
+ </div>
+
+
+</div>
+
+
+<div id="scale">
+
+
+		<div id="pic" >
+			<img src=""  id="scalePicture"></img>
+			<div id="advance" >
+				<div id="next" ><a href="#" onclick="nextPic(); " ><img src="img/next.png"  width="80" height="80"/> </a></div>
+				<div id="previous" ><a href="#" onclick="previousPic();"><img src="img/previous.png"  width="80" height="80"/> </a></div>
+				<div id="count"> </div>
+			</div>
+		</div>
+	<div id="illustrate" >
+		<img src="x.png" id="close" onclick="picClose()" />
+		Figure
+	</div>
+</div>
+
+<script type="text/javascript" src="js/platform.js"></script>
+<script type="text/javascript" src="js/uploadbar.js"></script>
+</body>
+</html>

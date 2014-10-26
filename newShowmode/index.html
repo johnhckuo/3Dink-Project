@@ -1,0 +1,187 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <meta charset="utf-8" />
+  
+  <!-- disable zooming -->
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=0" />
+  
+  <title>Carousel</title>
+  
+  <link rel="stylesheet" href="css/style.css" media="screen" />
+
+
+    <style media="screen">
+
+	body{
+		background:#000000;
+	}
+	
+    .container {
+		position:absolute;
+		left:50%;
+		top:50%;
+		width:1000px;
+		height:1000px;
+		margin-top: -570px;  
+		margin-left: -500px;  
+		  
+		-webkit-perspective: 1200px;
+		  
+		-webkit-transition:all 1s;
+		-webkit-perspective-origin-y:75%;
+		-webkit-transform-origin:center center;
+		-webkit-transition:all 1s;
+    }
+
+    #carousel {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left:50%;
+		top:50%;
+		width:1000px;
+		height:1000px;
+		margin-top: -570px;  
+		margin-left: -500px;  
+		-webkit-transform-style: preserve-3d; 
+		-webkit-transform-origin:center center;
+		-webkit-transition:all 0.5s;
+    }
+	
+	
+	
+	
+
+
+    #carousel figure {
+	
+		display: block;
+		position: absolute;
+
+		left:50%;
+		top:50%;
+		margin-top: -55px;  
+		margin-left: -55px;  
+		
+	
+		font-size: 80px;
+		font-weight: bold;
+		color: white;
+		text-align: center;
+		-webkit-transition:all 1s;
+		opacity:0;
+	  
+    }
+	#carousel figure div{
+		margin-top:20px; 
+		width:115px; 
+		height:115px;
+		
+	}
+	
+	#carousel figure div span{
+		-webkit-transition:all 0.5s;
+		padding-top:2.5px;
+		padding-left:2.5px;
+		padding-right:2.5px;
+		padding-bottom:2.5px;
+		position:absolute;
+		width:110px;
+		height:110px;
+		background:black;
+		opacity:0;
+		color:#ffffff;
+		font-size:5px;
+	} 
+	#carousel figure div:hover span{
+		opacity:0.7;
+
+	}
+	
+	#carousel figure div img{ 
+
+		width:100%; 
+		height:100%;
+	}
+	
+	#previous{
+		position:absolute;
+		left:50px;
+		top:250px;
+	}
+    #next{
+		position:absolute;
+		right:50px;
+		top:250px;
+	}
+
+
+	
+
+  </style>
+
+</head>
+<body>
+
+  <h1>johnhckuo</h1>
+
+  <section class="container" id="container">
+    <div id="carousel" class="target-paused">
+      <figure id = "figure0"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure1"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+      <figure id = "figure2"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure3"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure4"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure5"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure6"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure7"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure8"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure9"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure10"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure11"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure12"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure13"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure14"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure15"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure16"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure17"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  <figure id = "figure18"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/1.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/2.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/3.jpg" /></figure>
+      <figure id = "figure19"><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/4.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/5.jpg" /></div><div><span><h1>Title</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></span><img src="img/6.jpg" /></figure>
+	  
+    </div>
+  </section>
+
+  <section id="options">
+    <p id="navigation">
+      <button id="previous" data-increment="-1">Previous</button>
+      <button id="next" data-increment="1">Next</button>
+
+    </p>
+
+  </section>
+
+  <script src="js/utils.js"></script>
+  <script src="js/createList.js"></script>
+  <script src="js/init.js"></script>
+  
+  <script>
+	var count=0;
+	var list = new List();
+	var listCurrent;
+	
+	function $(id){
+		return document.getElementById(id);
+	}
+
+    
+
+    window.addEventListener( 'DOMContentLoaded', init, false);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+.formarea{
+	background-image:url('../../img/frame2.png');
+	background-size:100% 100%;
+	border-style:solid;
+	width:60%;
+	height:70%;
+	margin-top:10%;
+	margin-right:auto;
+	margin-left:auto;
+	padding: 20px 20px 0px 20px;
+	color:#999999;
+	font-family:Microsoft JhengHei;
+	font-size:24px;
+	border-style:solid;
+	border-width : 0px;
+	-webkit-border-radius: 5px;
+	position:relative;
+	}
+
+.toptext{
+	font-family:Microsoft JhengHei;
+	font-weight:bolder;
+	color:#999999;
+	font-size:30px;
+
+	}
+.printinfo{
+	color:#999999;
+	list-style:none;
+	font-size:20px;
+	font-family:Microsoft JhengHei;
+	}
+.printinfo{
+	
+	}
+	
+	
+.filltextbar{
+	color:#999999;
+	list-style:none;
+	font-size:20px;
+	font-family:Microsoft JhengHei;
+	}
+
+.filltextbar>li>input{
+	background-color:transparent;
+	font-size:15px;
+	font-family:Microsoft JhengHei;
+	margin:1% 1% 1% 1%;
+	color:#999999;
+	-webkit-border-radius: 5px;
+	border-width : 1px;
+	outline:none;
+	}
+
+
+	
+.filltextbutton{
+	list-style:none;
+	-webkit-padding-start: 0px;
+	bottom:0px;
+	}
+	
+.filltextbutton>li{
+	display:inline;
+	
+	}
+	
+.filltextbutton>li>input{
+	font-size:20px;
+	height:30px;
+	width:117px;
+	-webkit-border-radius: 5px;
+	background-image:url('../../img/fillinfinish.png');
+	background-size:100% 100%;
+	*float:right;
+	*margin-top:50px;
+	position:absolute;
+	bottom:2.5%;
+	right:20px;
+	}
+	
+.filltextbutton>li>a>input{
+	font-size:20px;
+	height:30px;
+	width:117px;
+	-webkit-border-radius: 5px;
+	background-image:url('../../img/backbutton.png');
+	background-size:100% 100%;
+	*float:left;
+	*margin-top:50px;
+	position:absolute;
+	bottom:2.5%;
+	}

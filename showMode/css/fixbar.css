@@ -1,0 +1,166 @@
+.navbar-fixed-top{
+	position:fixed;top:0;right:0;left:0;
+	z-index:1030;
+	display:block
+	}
+
+.navbar-fixed-top .navbar-inner{
+	padding-left:0;
+	padding-right:0;
+	-webkit-border-radius:0;
+	border-radius:0;
+	}
+
+.navbar-inner{
+	padding-left:20px;
+	padding-right:20px;
+	
+	
+	}
+
+.navbar{
+	overflow:visible;
+	margin-bottom:0px;
+	display:block
+	}
+
+
+
+.navcontainer{
+	*width:940px;
+	margin-left:auto;
+	margin-right:auto;
+	}
+
+.navcontainer:before,.navcontainer:after{
+	display:table;content:"";
+	}
+
+.navcontainer:after{
+	clear:both;
+	}
+
+.navcontainer-fluid{
+	padding-left:20px;
+	padding-right:20px;
+	}
+
+.navcontainer-fluid:before,.navcontainer-fluid:after{
+	display:table;
+	content:"";
+	}
+
+.navcontainer-fluid:after{
+	clear:both;
+	}
+
+.nav{
+	margin-left:0;
+	margin-bottom:18px;
+	list-style:none;
+	}
+
+.navbar .nav{
+	position:relative;left:0;
+	display:block;
+	float:left;
+	margin:10px 10px 0 0;
+	}
+
+.navbar .nav>li{
+	display:block;
+	float:left;
+	font-family: 微軟正黑體;
+	padding:10px 10px 0 10px;
+	}
+
+.navbar .nav>li>a{
+	float:none;
+	*padding:10px 10px 0px;
+	line-height:19px;
+	color:#999999;
+	text-decoration:none;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	font-family: 微軟正黑體;
+	font-size:15px;
+	}
+	
+.nav>li>input{
+	text-align:right;
+	color:white;
+	background-color: transparent;
+	border-radius:20px 20px 20px 20px;
+	padding-right:10px;
+	font-family: 微軟正黑體;
+	outline:none;
+	border:1px solid gray;
+	height:25px;
+	width:150px;
+	}
+	
+.navbar .nav>li>a:hover{
+	background-color:transparent;
+	color:#ffffff;
+	text-decoration:none;
+	}
+
+.navbar .nav .active>a,.navbar .nav .active>a:hover{
+	color:#ffffff;
+	text-decoration:none;
+	background-color:#000000;
+	} 
+
+.navbar .btn,.navbar .btn-group{
+	margin-top:5px;
+	}
+
+.navbar .brand:hover{
+	text-decoration:none; 
+	}
+
+.navbar .brand{
+	float:left;
+	display:block;
+	
+	padding-left:20px ;
+	
+	font-size:30px;
+	font-weight:200;
+	line-height:1;
+	color:#ffffff;
+	
+	}
+.brand >img{
+	width:80px;
+	height:80px;
+	margin:10px;
+	}
+
+.navbar .nav.searchbox{
+	float:right;
+	margin:10px 0 0 0;
+	}
+
+
+.nav.pull-right{
+	float:right;
+	font-family: 微軟正黑體;
+	margin:0px 30px 0 0;
+	-webkit-padding-start: 0px;
+	clear:right;
+	}
+
+.nav.pull-right-big{
+	*float:right;
+	font-family: 微軟正黑體;
+	margin:10px 0 0 0;
+	-webkit-padding-start: 0px;
+	font-size:25px;
+	color:#FFD8AF;
+	
+	}
+
+	
+body{
+	background-image:url(/img/bg.png);
+	}
