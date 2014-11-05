@@ -247,7 +247,7 @@ function save() {
 		loading(1);
 		var stl = startExport();
 		var blob = new Blob([stl], {type: 'text/plain'});
-	//	saveAs(blob, filename);                                            //Download File?
+		saveAs(blob, filename);                                            //Download File?
 		
 		formData.append("file", blob ,filename);
 		var xhr = new XMLHttpRequest();

@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<html lang="zh-tw">
+<!DOCTYPE html>
+<meta charset="utf-8" />
 <head>
 <title>列印進度</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
@@ -76,7 +77,7 @@
 						<li><a href="../three"><img src="img/forum.png"></a></li>
 						<li><a href="../jsstl-master/index.php"><img src="img/print.png"></a></li>
 						<li><a href="../newShowmode/index.php"><img src="img/platform.png"></a></li>
-						<li><a href=""><img src="img/forum.png"></a></li>	
+						<li><a href="../zhen/forum/forum_index.php"><img src="img/forum.png"></a></li>	
 					</ul>
 					<span class="logo"><a href="../index.php"><img src="../img/print_img/choose.png"></a></span>
 					<span class="nav uploadbutton" ><a href="/showMode/file_upload.php"><img src="../img/upload.png"></a></span>

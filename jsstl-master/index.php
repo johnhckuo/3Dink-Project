@@ -1,5 +1,6 @@
-<!doctype html>
-<html lang="en">
+<html lang="zh-tw">
+<!DOCTYPE html>
+<meta charset="utf-8" />
 <head>
 	<title>stl viewer</title>
 	<meta charset="utf-8">
@@ -9,7 +10,6 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><!--自動refresh-->
 
 	<style>
-
 		#modelDisplay{
 			position:absolute;
 			-webkit-transition:all 2s;
@@ -155,7 +155,7 @@
 						<li><a href="../three"><img src="img/forum.png"></a></li>
 						<li><a href="../jsstl-master/index.php"><img src="img/print.png"></a></li>
 						<li><a href="../newShowmode/index.php"><img src="img/platform.png"></a></li>
-						<li><a href=""><img src="img/forum.png"></a></li>	
+						<li><a href="../zhen/forum/forum_index.php"><img src="../img/forum.png"></a></li>	
 					</ul>
 					<span class="logo"><a href="../index.php"><img src="../img/print_img/choose.png"></a></span>
 					<span class="nav uploadbutton" ><a href="/showMode/file_upload.php"><img src="../img/upload.png"></a></span>
@@ -197,6 +197,9 @@
 						}
 			?>
 		</div>
-	</div>	
+	</div>
+	<script type="text/javascript">
+		//document.getElementById("frame").style.height =  window.innerHeight -150 +'px';	
+	</script>
 </body>
 </html>

@@ -48,7 +48,7 @@ $facebook = new Facebook($config);
 						<li><a href="../three"><img src="img/forum.png"></a></li>
 						<li><a href="../jsstl-master/index.php"><img src="img/print.png"></a></li>
 						<li><a href="../newShowmode/index.php"><img src="img/platform.png"></a></li>
-						<li><a href=""><img src="img/forum.png"></a></li>	
+						<li><a href="/zhen/forum/forum_index.php"><img src="../img/forum.png"></a></li>
 					</ul>
 					<span class="logo"><a href="../index.php"><img src="../img/print_img/choose.png"></a></span>
 					<span class="nav uploadbutton" ><a href="/showMode/file_upload.php"><img src="../img/upload.png"></a></span>
@@ -133,6 +133,7 @@ $facebook = new Facebook($config);
 		</div>	
 	</div>
 <?php //header('Refresh:3');  //for zhen debug usage?>      
+<script type="text/javascript" src="../js/search.js"></script>
 <script type="text/javascript">
 		
 		document.getElementById("login").style.height =  window.innerHeight -150 +'px';

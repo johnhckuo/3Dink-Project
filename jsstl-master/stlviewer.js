@@ -152,8 +152,8 @@
 						var geometry = event.content;
 						var material = new THREE.MeshPhongMaterial( { ambient: 0xff5533, color: 0xff5533, specular: 0x111111, shininess: 200 } );
 						mesh = new THREE.Mesh( geometry, material );
-
-						mesh.position.set( 0, 0, 0 );
+						mesh.rotation.x+=Math.PI*1.5;
+						mesh.position.set( 0, -50, 0 );
 						mesh.castShadow = true;
 						mesh.receiveShadow = true;
 						scene.add( mesh );
@@ -187,7 +187,7 @@
 
 					//mesh.rotation.x += 0.01;
 					if (mesh) {
-						mesh.rotation.y += 0.01;
+						mesh.rotation.z += 0.01;
 					}
 					//light1.position.z -= 1;
 

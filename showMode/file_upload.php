@@ -1,5 +1,6 @@
+<html lang="zh-tw" >
 <!DOCTYPE html>
-<html>
+<meta charset="utf-8" />
 <head>
     <meta charset="UTF-8">
     <title>拖曳多檔案上傳</title>
@@ -191,6 +192,10 @@
 		padding-top:10px;
 		height:550px;	
 	}
+	.2dpic{
+		position:absolute;opacity:0;
+	}
+
 	
 	</style>
 
@@ -258,6 +263,9 @@
 					選擇資料夾：<select name="folder" class='folder' id='folder'>
 						<?php include('personal_folder.php');?>
 					</select></p><p>
+					是否授權此3D作品為創用CC：
+					<input type="radio" name="creativeCommons" value="1" onclick="document.getElementById('authorization').style.display='none'"checked/>是
+					<input type="radio" name="creativeCommons"  value="0" onclick="document.getElementById('authorization').style.display='block'" />否</p><p id="authorization"  style="display:none">
 					是否授權此3D作品：
 					<input type="radio" name="authorization" value="1" onclick="document.getElementById('displayPrice').style.display='block'"/>是
 					<input type="radio" name="authorization"  value="0" onclick="document.getElementById('displayPrice').style.display='none'" checked/>否</p><p id="displayPrice"  style="display:none">
@@ -266,7 +274,8 @@
 					是否有套件？(同一套建三種檔案名稱需相同)
 					<input type="radio" name="part" value="yes" />有
 					<input type="radio" name="part" value="no" checked />無</p>
-					<p>2D圖檔<input type="file" name="normData2D"  id="secondnormData" /></p>
+					2D圖檔：<input type="file" name="normData2D" style="background-color:transparnt !important;" id="secondnormData" />
+
 				</div>
 				
 				<div id ="first" class = "upload">

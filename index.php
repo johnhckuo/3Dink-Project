@@ -5,7 +5,6 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=0" /> 
 		<link rel="stylesheet" type="text/css" href="css/rollImprove.css" >
 		<link rel="stylesheet" type="text/css" href="css/fixbar.css" >
-		
 		<style type="text/css">
 			.index_frame{
 				position:relative;top:0;right:0;left:0;
@@ -88,7 +87,7 @@
 							<li><a href="../three"><img src="img/forum.png"></a></li>
 							<li><a href="../jsstl-master/index.php"><img src="img/print.png"></a></li>
 							<li><a href="../newShowmode/index.php"><img src="img/platform.png"></a></li>
-							<li><a href=""><img src="img/forum.png"></a></li>	
+							<li><a href="/zhen/forum/forum_index.php"><img src="img/forum.png"></a></li>	
 						</ul>
 						<span class="logo"><a href="../index.php"><img src="img/print_img/choose.png"></a></span>
 						<span class="nav uploadbutton" ><a href="/showMode/file_upload.php"><img src="img/upload.png"></a></span>
@@ -99,7 +98,7 @@
 			<span class='threelink' id='threelink'><a href="three/index.php"><img src="img/print_img/choose.png"></a></span>
 			<span class='platformlink' id='platformlink'><a href="newShowmode/index.php"><img src="img/print_img/choose.png"></a></span>
 			<span class='printlink' id='printlink'><a href="jsstl-master/index.php"><img src="img/print_img/choose.png"></a></span>			
-			
+			<span class='forum' id='forum'><a href="/zhen/forum/forum_index.php"><img src="img/print_img/choose.png"></a></span>			
 			<!--<nav id="side-nav" role="navigation">
 				<ul>
 					<li><a class="pointnav href0" href="#headerlink" >head</a>

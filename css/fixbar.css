@@ -245,6 +245,19 @@
 	height:70px;
 	}
 
+.forum{
+	position:absolute;
+	top:3320px;
+	left:820px;
+	margin-left:10px;
+}	
+	
+.forum>a>img{
+	opacity:0;
+	width:200px;
+	height:70px;
+}
+	
 .ads_purchase{
 	position: absolute;
 	top: 3521px;

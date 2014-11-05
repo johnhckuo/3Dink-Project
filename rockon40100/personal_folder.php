@@ -213,10 +213,10 @@
 						<li><input type="text" id='searchbox'  placeholder="搜尋" style="font-color:#a1a1a1" onkeydown="search()"></li>
 					</ul> 
 					<ul class="nav button">
-						<li><a href="../three"><img src="img/forum.png"></a></li>
-						<li><a href="../jsstl-master/index.php"><img src="img/print.png"></a></li>
-						<li><a href="../newShowmode/index.php"><img src="img/platform.png"></a></li>
-						<li><a href=""><img src="img/forum.png"></a></li>	
+						<li><a href="../three"><img src="../img/forum.png"></a></li>
+						<li><a href="../jsstl-master/index.php"><img src="../img/print.png"></a></li>
+						<li><a href="../newShowmode/index.php"><img src="../img/platform.png"></a></li>
+						<li><a href="../zhen/forum/forum_index.php"><img src="../img/forum.png"></a></li>	
 					</ul>
 					<span class="logo"><a href="../index.php"><img src="../img/print_img/choose.png"></a></span>
 					<span class="nav uploadbutton" ><a href="/showMode/file_upload.php"><img src="../img/upload.png"></a></span>

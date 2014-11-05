@@ -122,7 +122,9 @@
 			z-index:1000;
 		}
 		.category_title{
-			background-image:url(../img/frame.png);
+			*background-image:url(../img/frame.png);
+			background:-webkit-linear-gradient(top,rgba(30,30,30,0.3),rgba(250,250,250,0.3));
+			*opacity:0.6;
 			background-size:100% 100%;
 			width:720px;
 			*height:50px;
@@ -290,7 +292,7 @@
 						<li><a href="../three"><img src="../img/forum.png"></a></li>
 						<li><a href="../jsstl-master/index.php"><img src="../img/print.png"></a></li>
 						<li><a href="../newShowmode/index.php"><img src="../img/platform.png"></a></li>
-						<li><a href=""><img src="../img/forum.png"></a></li>	
+						<li><a href="../zhen/forum/forum_index.php"><img src="../img/forum.png"></a></li>
 					</ul>
 					<span class="logo"><a href="../index.php"><img src="../img/print_img/choose.png"></a></span>
 					<span class="nav uploadbutton" ><a href="/showMode/file_upload.php"><img src="../img/upload.png"></a></span>

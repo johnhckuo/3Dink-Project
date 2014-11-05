@@ -468,7 +468,7 @@ function up(event){
 		}
 		var pipeSpline = new THREE.SplineCurve3(tubePosition);
 		var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30, side: THREE.DoubleSide});
-		var tube = new THREE.TubeGeometry(pipeSpline, 50, tubeThickness, 6, false);
+		var tube = new THREE.TubeGeometry(pipeSpline, 50, tubeThickness, 3, false);
 		
 		var tube_Mesh = new THREE.Mesh( tube, material );
 		tube_Mesh.position.y = plane.position.y;
