@@ -269,7 +269,9 @@
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
-				divObject.className = "category_content";
+				setTimeout(function () {  
+					divObject.className = "category_content";
+				}, 1000);
 			}
 		}
 		

@@ -10,8 +10,10 @@ var mouse = new THREE.Vector2(),offset = new THREE.Vector3(),INTERSECTED, SELECT
 var geometryMerge = new THREE.Geometry();
 var convertFlag=0;
 var exportTarget;
-var extended = false , lastTarget;
+var extended = false , lastTarget , controlExtended=false;
 var checkPrint = 0;
+var firstPersoncontrols;
+var cameraSphere;
 function $(id){
 	return document.getElementById(id);
 }
@@ -40,10 +42,23 @@ function init() {
     scene.add(camera);
     camera.position.set(0,100,200);
 	
-	//  camera.lookAt(scene.position);
+	//var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30,opacity:0, transparent:true});
+	var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30});
+	
+	var objectRadius = 10;
+	var segments = 8;
+
+/*	var sphereGeometry = new THREE.SphereGeometry( objectRadius, 32, 32 );		
+	cameraSphere = new THREE.Mesh( sphereGeometry, material );
+	cameraSphere.position.set(0,10,0);
+	scene.add(cameraSphere);          */
+	//renderer = new THREE.WebGLDeferredRenderer({width: window.innerWidth,height: window.innerHeight,scale: 1, antialias: true,tonemapping: THREE.FilmicOperator, brightness: 2.5 });
+
+	
+	
     renderer = new THREE.WebGLRenderer( {antialias:true, alpha: true } );
     renderer.setSize(window.innerWidth, window.innerHeight);
-	renderer.setClearColor( 0x000000, 1 );
+	renderer.setClearColor( 0x000000, 1 );  
     container = document.getElementById( 'div1' );
     container.appendChild( renderer.domElement );
 	
@@ -64,7 +79,7 @@ function init() {
 	controls.minDistance = 0.1;
 	controls.maxDistance = 20000;
 	 
-	controls.keys = [ 16, 17, 18 ]; // [ rotateKey, zoomKey, panKey ]
+	controls.keys = [ 16, 17, 18 ]; // [ rotateKey, zoomKey, panKey ] 
 	
 
 
@@ -76,12 +91,38 @@ function init() {
     container.appendChild(stats.domElement);
 
     // LIGHT
-    var light = new THREE.PointLight(0xffffff,3);
-	light.position.set(100,1000,100);
+ //   var light = new THREE.PointLight(0xffffff,3);
+//	light.position.set(100,1000,100);
 
-    scene.add(light);
+ //  scene.add(light);
+	// white spotlight shining from the side, casting shadow
 
 	
+	var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+	directionalLight.position.set( 200, 200, 200 );
+	scene.add( directionalLight );
+		 
+		
+	
+	var directionalLight3 = new THREE.DirectionalLight( 0xffffff, 0.5 );
+	directionalLight3.position.set( -200, 200, -200 );
+	scene.add( directionalLight3 );
+
+		
+		var planeGeometry1 = new THREE.CubeGeometry(4, 10, 0);
+        var planeGeometry1Mat = new THREE.MeshPhongMaterial({color: 0xff0000})
+        var plane1 = new THREE.Mesh(planeGeometry1, planeGeometry1Mat);
+        plane1.position = directionalLight.position;
+        scene.add(plane1);
+		
+
+		
+		var planeGeometry3 = new THREE.CubeGeometry(4, 10, 0);
+        var planeGeometry3Mat = new THREE.MeshPhongMaterial({color: 0xff0000})
+        var plane3 = new THREE.Mesh(planeGeometry3, planeGeometry3Mat);
+        plane3.position = directionalLight3.position;
+        scene.add(plane3);
+
     // add 3D text default
 
 	
@@ -112,17 +153,19 @@ function init() {
 	}  */
 //	THREE.GeometryUtils.merge(geometryMerge, textMesh[0]);                     // --------------------STL converter modified
 	//plane create
-	var geometry = new THREE.PlaneGeometry( 200, 200 );
-	var texture = THREE.ImageUtils.loadTexture( 'img/plane.png' );
-	var material = new THREE.MeshBasicMaterial( { side: THREE.DoubleSide,map: texture , opacity:0, transparent:true} );
+	var size = 200,step = 10;
+	
+	var geometry = new THREE.PlaneGeometry(size*2,size*2 );
+	var material = new THREE.MeshPhongMaterial({color: 0x000000,side: THREE.DoubleSide,transparent:true , opacity:0} );
 	plane = new THREE.Mesh( geometry, material );
 	plane.name = "plane";
 	scene.add( plane );
 	plane.position.set(0,0,-10);
-	plane.rotation.x=Math.PI*1.5;   
-	var size = 100,step = 10;
+	plane.rotation.x=Math.PI*1.5;     
+	
 	var geometry= new THREE.Geometry();
-	var material = new THREE.LineBasicMaterial({color:'white'});
+	var material = new THREE.LineBasicMaterial({color:0x666666});
+	//var material = new THREE.LineBasicMaterial({color:0xffffff});
 		for (var i = -size ; i<=size ; i+=step){
 			geometry.vertices.push(new THREE.Vector3(-size , -0.04 , i));
 			geometry.vertices.push(new THREE.Vector3(size , -0.04 , i));
@@ -139,24 +182,25 @@ function init() {
 	
 	
 	//fog 
-	scene.fog = new THREE.Fog(0xffffff,100,20000);
+	scene.fog = new THREE.Fog(0x000000,4000,10000);
 	
 	
 	//skybox
+/*	
+	var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );	
 	
-	var skyGeometry = new THREE.BoxGeometry( 5000, 5000, 5000 );	
 	
-	/*
 	var imagePrefix = "img/";
 	var imageSuffix = ".png";
 	var materialArray = [];
 	
-	for (var i = 0; i < 6; i++)
-		materialArray.push( new THREE.MeshBasicMaterial({
-			map: THREE.ImageUtils.loadTexture( imagePrefix + 'back' + imageSuffix ),
-			side: THREE.BackSide
-		}));   */
+//	for (var i = 0; i < 6; i++)
+//		materialArray.push( new THREE.MeshBasicMaterial({
+//			map: THREE.ImageUtils.loadTexture( imagePrefix + 'back' + imageSuffix ),
+//			side: THREE.BackSide
+//		}));   
 	
+
 	var materialArray = [
 
 					new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/skyTexture/px.jpg' ) ,side: THREE.BackSide } ), // right
@@ -165,32 +209,71 @@ function init() {
 					new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/skyTexture/ny.jpg' ) ,side: THREE.BackSide } ), // bottom
 					new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/skyTexture/pz.jpg' ) ,side: THREE.BackSide } ), // back
 					new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/skyTexture/nz.jpg' ) ,side: THREE.BackSide } )  // front
-
-				];
+				
+				];			
+	
 	var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+	
 	var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );
 	scene.add( skyBox );
 	
+	
+*/
+	
+	// create the particle variables
+	
+	/*
+var particleCount = 1800,
+    particles = new THREE.Geometry(),
+    pMaterial = new THREE.ParticleBasicMaterial({
+      color: 0xFFFFFF,
+      size: 20
+    });
+
+// now create the individual particles
+for (var p = 0; p < particleCount; p++) {
+
+  // create a particle with random
+  // position values, -250 -> 250
+  var pX = Math.random() * 500 - 250,
+      pY = Math.random() * 500 - 250,
+      pZ = Math.random() * 500 - 250,
+      particle = new THREE.Vertex(
+        new THREE.Vector3(pX, pY, pZ)
+      );
+
+  // add it to the geometry
+  particles.vertices.push(particle);
+}
+
+// create the particle system
+var particleSystem = new THREE.ParticleSystem(
+    particles,
+    pMaterial);
+
+// add it to the scene
+scene.add(particleSystem);
+	*/
+	
+	//particle system
 	//axes
 	axes = buildAxes( 2500 );
 	scene.add(axes);
-
-	
-	
 	
 	// EventListener
 	renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
 	renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
 	renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
 	
-	renderer.domElement.addEventListener('dblclick', lockDown , false);
+//	renderer.domElement.addEventListener('dblclick', lockDown , false);
+	renderer.domElement.addEventListener('click', lockDown , false);
 	
 	window.addEventListener( 'resize', onWindowResize, false );
 	
 	document.getElementById("clickMe").addEventListener("click" , extendPanel , false);
 	document.getElementById("clickSTL").addEventListener("click" , extendPanel , false);
-	
-	 document.getElementById("tutorial").setAttribute("style","-webkit-transform:translateY(100px)");
+	document.getElementById("clickControl").addEventListener("click" , extendControl , false);
+	document.getElementById("tutorial").setAttribute("style","-webkit-transform:translateY(100px)");
 }
 
 
@@ -214,6 +297,16 @@ function extendPanel(event){
 	extended = !extended;
 	lastTarget = event.target.parentNode.id;
 }
+
+function extendControl(event){
+	if (!controlExtended){
+		document.getElementById("controlPanel").setAttribute("style","-webkit-transform:translateX(-365px)");
+	}else{
+		document.getElementById("controlPanel").setAttribute("style","-webkit-transform:translateX(0px)");
+	}
+	controlExtended = !controlExtended;
+}
+
 function extendSTL(){
 	document.getElementById("attribute").setAttribute("style","-webkit-transform:translateX(-65px)");
 	document.getElementById("stlViewer").setAttribute("style","-webkit-transform:translateX(365px)");
@@ -240,6 +333,12 @@ function onWindowResize() {
 }
 
 function save() {
+
+		if (currentObject[0] == null && paintObjects[0] == null){
+			alert("No Object Created");
+			return;
+		}
+
 		var filename = 'model.stl';
 		var formData = new FormData();
 		checkPrint = 1;
@@ -269,6 +368,22 @@ function save() {
 }
 
 function startExport(){
+	geometryMerge = new THREE.Geometry();
+	if (currentObject[0]){
+		for (var i in currentObject){
+			THREE.GeometryUtils.merge(geometryMerge, currentObject[i]);
+		}
+		
+		
+	}
+	if (paintObjects[0]){
+		for (var i in paintObjects){
+			THREE.GeometryUtils.merge(geometryMerge, paintObjects[i]);
+		}
+		
+		
+	}
+
     exportGeo = removeDuplicateFaces( geometryMerge );
     //THREE.GeometryUtils.triangulateQuads( geometryMerge );
 	
@@ -282,7 +397,10 @@ function startExport(){
 function animate() {
 	window.requestAnimationFrame( animate );
 	stats.update();
+//	var clock = new THREE.Clock();
+//	var delta = clock.getDelta();
 	controls.update(); //for cameras
+	
 	renderer.render( scene, camera );
 }
 function hoverPrint(){
