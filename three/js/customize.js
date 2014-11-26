@@ -20,6 +20,12 @@ var paintCubes = [];
 var subtractObjects = [];
 var subtract = false;
 var treeFlag = false;
+var house;
+var window_bsp , windowPioneer ,houseFirstCheck=false;
+var deleteHouse , intersectPoin , intersectObject;
+var lastWindow;
+var lastVoxel;
+var cameraFlag = 0;
 //---------------------
 
 var actualMoveSpeed = 0;
@@ -548,6 +554,18 @@ function voxelPainter(){
 //	}
 	var container = document.getElementById("div1");
 	if (controls.enabled){
+		if (document.getElementById('voxelLength').value == 0){
+			alert("方塊寬度尚未指定");
+			return;
+		}
+		if (lastVoxel != null){
+			if (document.getElementById('voxelLength').value != lastVoxel){
+				alert("方塊不可同時存在兩種寬度，請先清除畫面");
+				return;
+			
+			}
+		}
+		lastVoxel = document.getElementById('voxelLength').value;
 		document.getElementById('minecraft').value="關閉MineCraft";
 		controls.enabled = false;
 		container.addEventListener( 'mousemove', voxelMove, false );
@@ -555,6 +573,9 @@ function voxelPainter(){
 		container.addEventListener( 'mouseup', voxelUp, false );
 		document.getElementById('minecraft').style.color="#ffffff";
 		document.getElementById('minecraft').style.background="red";
+		
+		window.removeEventListener( 'click', voxelLock, false );
+		
 	}else{
 		controls.enabled = true;
 		document.getElementById('minecraft').value="MineCraft";
@@ -564,6 +585,7 @@ function voxelPainter(){
 		scene.remove(pioneerCube);
 		document.getElementById('minecraft').style.color="#999999";
 		document.getElementById('minecraft').style.background="black";
+		window.addEventListener( 'click', voxelLock, false );
 	}
 	voxelFlag=0;
 }
@@ -588,18 +610,39 @@ function voxelMove(event){
 	
 }
 
+/* function voxelPlacement(x , y ,z , length , point , index){
+	
+	if (x != 0){
+		voxelX = voxelCoordinate[index].x + (x/2) + (length/2);
+		voxelY = Math.ceil(point.y/length)*length;
+		voxelZ = Math.ceil(point.z/length)*length;
+
+	}
+	else if (y != 0){
+		voxelX = Math.ceil(point.x/length)*length;
+		voxelY = voxelCoordinate[index].y + (y/2) + (length/2);
+		voxelZ = Math.ceil(point.z/length)*length;
+	}
+	else if (z != 0){
+		voxelX = Math.ceil(point.x/length)*length;
+		voxelY = Math.ceil(point.y/length)*length;
+		voxelZ = voxelCoordinate[index].z + (z/2) + (length/2);
+		
+		
+	}
+}
+ */
 function voxelPlacement(x , y ,z ,index){
 	voxelX = voxelCoordinate[index].x + x;
 	voxelY = voxelCoordinate[index].y + y;
 	voxelZ = voxelCoordinate[index].z + z;
 }
 
-
-
 function voxelDown(event){
 	event.preventDefault();
 	controls.enabled = false;
-	var length = 10;
+	
+	var length = document.getElementById('voxelLength').value*25;
 	var materialArray = [];
 /*	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/grass.jpg' ) }));
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/grass.jpg' ) }));
@@ -644,8 +687,9 @@ function voxelUp(event){
 
 function updatePioneer(){
 	scene.remove (pioneerCube);
-	var length = 10;
+	var length = document.getElementById('voxelLength').value*25;
 	
+
 	var intersects = intersectDetector(plane);
 	var voxelIntersects;
 
@@ -655,22 +699,25 @@ function updatePioneer(){
 	if (voxel.length>0){
 		voxelIntersects = intersectsDetector(voxel);
 		
+		
+		
 		if (voxelIntersects.length > 0){
+		
 			var index = voxelIntersects[0].object.name.split('.')[1];
 			if (voxelIntersects[0].point.x == (voxelCoordinate[index].x + length/2 )){
-				voxelPlacement(length , 0 , 0 , index);
+				voxelPlacement(length , 0 , 0  , index);
 			}else if (voxelIntersects[0].point.x == (voxelCoordinate[index].x - length/2)){
-				voxelPlacement(-length , 0 , 0 , index);
+				voxelPlacement(-length , 0 , 0  , index);
 			}
 			if (voxelIntersects[0].point.y == (voxelCoordinate[index].y + length/2 )){
-				voxelPlacement(0 , length , 0 , index);
+				voxelPlacement(0 , length , 0  , index);
 			}else if (voxelIntersects[0].point.y == (voxelCoordinate[index].y - length/2)){
-				voxelPlacement(0 , -length , 0 , index);
+				voxelPlacement(0 , -length , 0  , index);
 			}
 			if (voxelIntersects[0].point.z == (voxelCoordinate[index].z + length/2 )){
-				voxelPlacement(0 , 0 , length , index);
+				voxelPlacement(0 , 0 , length  , index);
 			}else if (voxelIntersects[0].point.z == (voxelCoordinate[index].z - length/2)){
-				voxelPlacement(0 , 0 , -length , index);
+				voxelPlacement(0 , 0 , -length  , index);
 			}
 		}else if (intersects.length > 0){
 		
@@ -1032,7 +1079,8 @@ function chair(){
 
 	var mesh = new THREE.Mesh( cube_bsp.toGeometry(), material );
 	mesh.scale.set( 0.5, 0.5, 0.5 );
-	furnitureCreator(mesh,cubeSize/2)
+	furnitureCreator(mesh,0);
+	
 
 }
 
@@ -1093,7 +1141,7 @@ function desk(){
 
 	var mesh = new THREE.Mesh( cube_bsp.toGeometry(), material );
 	mesh.scale.set( 0.5, 0.5, 0.5 );
-	furnitureCreator(mesh,cubeSize/2)
+	furnitureCreator(mesh,0)
 }
 
 function wall(){
@@ -1234,6 +1282,7 @@ function foundation(){
 	
 	
 	var mesh = new THREE.Mesh( temp.toGeometry(), material );
+	
 	furnitureCreator(mesh,houseHeight/2);
 	subtractObjects.push(mesh);
 }
@@ -1443,58 +1492,43 @@ function tree(){
 
 }
 
+
 function windowMaker(){
 
 	
 	if (!subtract){
-		window.addEventListener('click', addWindow , false);
+		renderer.domElement.addEventListener('mousedown', addWindow , false);
 		document.getElementById('window').style.color="#ffffff";
 		document.getElementById('window').style.background="red";
+		renderer.domElement.removeEventListener('click', lockDown , false);
+		renderer.domElement.addEventListener( 'mousemove', previewWindow, false );
+	
+	
 	}else{
-		window.removeEventListener('click', addWindow , false);
+		renderer.domElement.removeEventListener('mousedown', addWindow , false);
 		document.getElementById('window').style.color="#999999";
 		document.getElementById('window').style.background="black";
+		renderer.domElement.removeEventListener( 'mousemove', previewWindow, false );
+		renderer.domElement.addEventListener('click', lockDown , false);
+		if (lastWindow != null){
+			scene.remove(lastWindow);
+		}
+		
+		
 	}
 	subtract = !subtract;
 }
-
-function addWindow(event){
-	var cubeSize = 5;
-	var windowHeight = 5;
-	var windowWidth = 5;
-	var windowInterval = 6;
-	
-	event.preventDefault();			
-				
-				
-	var vectorDrag = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
-	projector.unprojectVector( vectorDrag, camera );
-
-	var raycaster = new THREE.Raycaster( camera.position, vectorDrag.sub( camera.position ).normalize() );
-	var intersects = raycaster.intersectObjects( subtractObjects );
-	if (intersects.length>0){
-		
-		intersects[0].object.geometry.computeBoundingBox();
-		var boundbox = intersects[0].object.geometry.boundingBox;
-
-		var originX = boundbox.max.x-boundbox.min.x;
-		var originY = boundbox.max.y-boundbox.min.y;
-		var originZ = boundbox.max.z-boundbox.min.z;
-		
-		
-		
-		var box = new THREE.Box3();
-		box.setFromObject( intersects[0].object );
-		var offsetX = box.max.x - box.min.x;
-		var offsetY = box.max.y - box.min.y;
-		var offsetZ = box.max.z - box.min.z;
+function windowCreator(pos,pioneerFlag){
+		var cubeSize = 5;
+		var windowHeight = 5;
+		var windowWidth = 5;
+		var windowInterval = 6;
+		var material;
+		if (pioneerFlag)
+			material = new THREE.MeshPhongMaterial( {color: 0xff0000 , transparent : true , opacity:0.5} );             //window
+		else
+			material = new THREE.MeshPhongMaterial( {ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30, side: THREE.DoubleSide} );             //window
 			
-		var scaleX = offsetX/originX;
-		var scaleY = offsetY/originY;
-		var scaleZ = offsetX/originZ;
-		
-		var pos = intersects[0].point;                                             
-		var material = new THREE.MeshPhongMaterial( {ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30, side: THREE.DoubleSide} );             //window
 		var cube = new THREE.CubeGeometry(windowWidth, windowHeight, cubeSize);     //here (textWidth+5, textHeight+5, length)
 		var cube_mesh = new THREE.Mesh(cube,material);
 		cube_mesh.position.set(pos.x , pos.y , pos.z);
@@ -1535,24 +1569,157 @@ function addWindow(event){
 		cube_mesh8.position.set(pos.x+windowInterval , pos.y+windowInterval , pos.z+windowInterval);
 		window_bsp = window_bsp.union(new ThreeBSP( cube_mesh8 ));
 		
+		return window_bsp;
+		
+}
+function previewWindow(){
+	
+
+	
+	event.preventDefault();			
+	
+				
+	var vectorDrag = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
+	projector.unprojectVector( vectorDrag, camera );
+
+	var raycaster = new THREE.Raycaster( camera.position, vectorDrag.sub( camera.position ).normalize() );
+	var intersects = raycaster.intersectObjects( subtractObjects );
+	if (intersects.length>0){
+		if (lastWindow != null){
+			scene.remove(lastWindow);
+		}
+		var material = new THREE.MeshPhongMaterial( {color: 0xff0000 , transparent : true , opacity:0.5} );             //window
+
+	//	if (houseFirstCheck == false){
+	//		house = intersects[0].object.clone();
+	//		houseFirstCheck = true;
+	//	}
+		
+		intersects[0].object.geometry.computeBoundingBox();
+		var boundbox = intersects[0].object.geometry.boundingBox;
+
+		var originX = boundbox.max.x-boundbox.min.x;
+		var originY = boundbox.max.y-boundbox.min.y;
+		var originZ = boundbox.max.z-boundbox.min.z;
+		
+		
+		
+		var box = new THREE.Box3();
+		box.setFromObject( intersects[0].object );
+		var offsetX = box.max.x - box.min.x;
+		var offsetY = box.max.y - box.min.y;
+		var offsetZ = box.max.z - box.min.z;
+			
+		var scaleX = offsetX/originX;
+		var scaleY = offsetY/originY;
+		var scaleZ = offsetX/originZ;
+		
+		pos = intersects[0].point;   
+		
+		
+		window_bsp = windowCreator(pos,1);
+		var windowMesh = new THREE.Mesh( window_bsp.toGeometry(), material );
+		//-------------------------------  Target Object regenerate
+		
+		
+	//	var wall_mesh = new THREE.Mesh(wall,material);
+		
+		
+		windowMesh.position.set(pos.x , pos.y , pos.z);
+		scene.add(windowMesh);
+		
+		
+	//	var house_bsp = new ThreeBSP( house );
+		
+	//	house_bsp = house_bsp.subtract( window_bsp );
+		
+
+	//	var mesh = new THREE.Mesh( house_bsp.toGeometry(), material );
+	//	mesh.scale.set(scaleX,scaleY,1);
+		//doorCreator(windowMesh, intersects[0].object.position.x ,intersects[0].object.position.y , intersects[0].object.position.z); 
+		lastWindow = windowMesh;
+	//	subtractObjects.push(mesh);
+		
+	//	if (currentObject[0]){
+		
+	//		for (var i in subtractObjects){
+	//			if (intersects[0].object.name == subtractObjects[i].name){
+	//				subtractObjects.splice(i,1);
+					
+	//			}
+	//		}
+	//	}
+	//	scene.remove(intersects[0].object);
+	//	targetObject = intersects[0].object;
+	//	deleteHouse = intersects[0].object.clone();
+	//	movementProject("delete");
+		
+//		controls.enabled = false;	
+		
+	
+		intersectPoint = intersects[0].point.clone();
+		
+	//	intersectObject = mesh.clone();
+	}
+
+			
+} 	
+
+
+function addWindow(event){
+	var vectorDrag = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
+	projector.unprojectVector( vectorDrag, camera );
+
+	var raycaster = new THREE.Raycaster( camera.position, vectorDrag.sub( camera.position ).normalize() );
+	var intersects = raycaster.intersectObjects( subtractObjects );
+	if (intersects.length>0){
+		var material = new THREE.MeshPhongMaterial( {ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30, side: THREE.DoubleSide} );             //window
+
+		if (houseFirstCheck == false){
+			house = intersects[0].object.clone();
+			houseFirstCheck = true;
+		}
+		
+		intersects[0].object.geometry.computeBoundingBox();
+		var boundbox = intersects[0].object.geometry.boundingBox;
+
+		var originX = boundbox.max.x-boundbox.min.x;
+		var originY = boundbox.max.y-boundbox.min.y;
+		var originZ = boundbox.max.z-boundbox.min.z;
+		
+		
+		
+		var box = new THREE.Box3();
+		box.setFromObject( intersects[0].object );
+		var offsetX = box.max.x - box.min.x;
+		var offsetY = box.max.y - box.min.y;
+		var offsetZ = box.max.z - box.min.z;
+			
+		var scaleX = offsetX/originX;
+		var scaleY = offsetY/originY;
+		var scaleZ = offsetX/originZ;
+		
+		pos = intersects[0].point;   
+		
+		
+		window_bsp = windowCreator(pos,1);
 		
 		//-------------------------------  Target Object regenerate
 		
-		var wall = new THREE.CubeGeometry(offsetX, offsetY, offsetZ);     //here (textWidth+5, textHeight+5, length)
+		
 	//	var wall_mesh = new THREE.Mesh(wall,material);
 		
-		var wall_mesh = intersects[0].object.clone();
-		
-		wall_mesh.position.set(intersects[0].object.position.x , intersects[0].object.position.y , intersects[0].object.position.z);
-		
+		var wmesh = intersects[0].object;
+	
 		
 		
-		var wall_bsp = new ThreeBSP( wall_mesh );
 		
-		var wall_bsp = wall_bsp.subtract( window_bsp );
+		var house_bsp = new ThreeBSP( wmesh );
+		
+		house_bsp = house_bsp.subtract( window_bsp );
 		
 
-		var mesh = new THREE.Mesh( wall_bsp.toGeometry(), material );
+		var mesh = new THREE.Mesh( house_bsp.toGeometry(), material );
 		mesh.scale.set(scaleX,scaleY,1);
 		doorCreator(mesh, intersects[0].object.position.x ,offsetY/2 , intersects[0].object.position.z); 
 		subtractObjects.push(mesh);
@@ -1568,21 +1735,14 @@ function addWindow(event){
 		}
 	//	scene.remove(intersects[0].object);
 		targetObject = intersects[0].object;
+		deleteHouse = intersects[0].object.clone();
 		movementProject("delete");
-//		controls.enabled = false;	
-		
-		
-		
-	}  
-
-	
-			
-} 	
-	
+	}
+}
 
 function movementProject(movement){
 	var rotateStep = Math.PI/4;
-	var translateStep = 5;
+	var translateStep = 1;//zhen 5->1
 	var scaleStep = 2;
 	
 	
@@ -1601,12 +1761,20 @@ function movementProject(movement){
 				targetObject.rotation.x -= rotateStep; 
 				break;
 				
+			case 'rotate0X':
+				targetObject.rotation.x = 0; 
+				break;
+			
 			case 'rotatePY':
 				targetObject.rotation.y += rotateStep; 
 				break;
 				
 			case 'rotateNY':
 				targetObject.rotation.y -= rotateStep; 
+				break;
+			
+			case 'rotate0Y':
+				targetObject.rotation.y = 0; 
 				break;
 				
 			case 'rotatePZ':
@@ -1616,6 +1784,10 @@ function movementProject(movement){
 			case 'rotateNZ':
 				targetObject.rotation.z -= rotateStep; 
 				break;
+			
+			case 'rotate0Z':
+				targetObject.rotation.z = 0; 
+				break;
 				
 			case 'translatePX':
 				targetObject.position.x += translateStep; 
@@ -1623,6 +1795,10 @@ function movementProject(movement){
 				
 			case 'translateNX':
 				targetObject.position.x -= translateStep; 
+				break;
+				
+			case 'translate0X':
+				targetObject.position.x = 0; 
 				break;
 				
 			case 'translatePY':
@@ -1634,6 +1810,11 @@ function movementProject(movement){
 				targetObject.position.y -= translateStep; 
 				modifiedOffset -= translateStep;
 				break;
+			
+			case 'translate0Y':
+				targetObject.position.y = 0; 
+				modifiedOffset = 0;
+				break;
 				
 			case 'translatePZ':
 				targetObject.position.z += translateStep; 
@@ -1643,12 +1824,20 @@ function movementProject(movement){
 				targetObject.position.z -= translateStep; 
 				break;
 				
+			case 'translate0Z':
+				targetObject.position.z = 0; 
+				break;
+				
 			case 'scalePX':
 				targetObject.scale.x += scaleStep; 
 				break;
 				
 			case 'scaleNX':
 				targetObject.scale.x -= scaleStep; 
+				break;
+			
+			case 'scale0X':
+				targetObject.scale.x = 1; 
 				break;
 				
 			case 'scalePY':
@@ -1658,6 +1847,10 @@ function movementProject(movement){
 			case 'scaleNY':
 				targetObject.scale.y -= scaleStep; 
 				break;
+			
+			case 'scale0Y':
+				targetObject.scale.y = 1; 
+				break;
 				
 			case 'scalePZ':
 				targetObject.scale.z += scaleStep; 
@@ -1665,6 +1858,10 @@ function movementProject(movement){
 				
 			case 'scaleNZ':
 				targetObject.scale.z -= scaleStep; 
+				break;
+			
+			case 'scale0Z':
+				targetObject.scale.z = 1; 
 				break;
 				
 			case 'delete':
@@ -1694,6 +1891,7 @@ function clearObject(){
 	voxel = [];
 	voxelCoordinate = [];
 	voxelNumber = 0;
+	lastVoxel = null;
 	if (currentObject[0]){
 		for (var i in currentObject){
 			scene.remove(currentObject[i]);
@@ -1707,6 +1905,7 @@ function clearObject(){
 		}
 		paintObjects=[];
 	}
+	
 }
 
 function sumCreator(object,offset){
@@ -1714,8 +1913,15 @@ function sumCreator(object,offset){
 	paintFlag = 1;
 
 	
-	object.name = "obj."+objectCount++;         //dot for string exploit
+	object.geometry.computeBoundingBox();
+	var boundbox = object.geometry.boundingBox;
+	var offset = boundbox.max.y - boundbox.min.y;
+	offset /= 2;
 	object.position.set( 0,offset,0 );
+	
+	
+	object.name = "obj."+objectCount++;         //dot for string exploit
+	
 	object.geometry.computeFaceNormals();
 	currentObject.push(object);
 	scene.add( object );
@@ -1726,26 +1932,74 @@ function sumCreator(object,offset){
 function furnitureCreator(object,offset){
 	voxelFlag = 1;
 	paintFlag = 1;
-	object.name = "obj."+objectCount++;         //dot for string exploit
+	
+	
 	object.position.set( 0,offset,0 );
+	object.name = "obj."+objectCount++;         //dot for string exploit
 	object.geometry.computeFaceNormals();
 	currentObject.push(object);
 	scene.add( object );
 	objectOffset.push(offset);
 	objects.push(object);
+	
+	
 }
 
 function doorCreator(object,x,y,z){
 	voxelFlag = 1;
 	paintFlag = 1;
+	
+	object.geometry.computeBoundingBox();
+	var boundbox = object.geometry.boundingBox;
+	var offset = boundbox.max.y - boundbox.min.y;
+	offset /= 2;
+	object.position.set( x,offset,z );
+	
 	object.name = "obj."+objectCount++;         //dot for string exploit
-	object.position.set( x,y,z );
 	//object.geometry.computeFaceNormals();
 	currentObject.push(object);
 	scene.add( object );
-	objectOffset.push(y);
+	objectOffset.push(offset);
 	objects.push(object);
+	
+	
 }
+
+
+
+
+function cameraLock(){
+	event.preventDefault();			
+	if (targetObject == null){
+		alert("請指定物件");
+		return;
+	}
+	if (!cameraFlag){
+		cameraFlag = 1;
+		controls.target = targetObject.position;	
+		targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
+		document.getElementById("cameraRotate").value = "停止觀看物件";
+	//	camera.position.addScalar(targetObject.position);
+		document.getElementById('cameraRotate').style.color="#ffffff";
+		document.getElementById('cameraRotate').style.background="red";
+		controls.enabled = false;
+		
+	}else{
+		cameraFlag = 0;
+		targetObject = null;
+		controls.target = plane.position;	
+		document.getElementById("cameraRotate").value = "觀看物件";
+		camera.position.set(0,300,700);
+		rotation = 0;
+		document.getElementById('cameraRotate').style.color="#999999";
+		document.getElementById('cameraRotate').style.background="black";
+		controls.enabled = true;
+	}
+	//camera.lookAt();
+		
+			
+}
+
 
 
 /*stl import*/
@@ -1793,17 +2047,33 @@ function stlcreat(path) {
 var nameArr = new Array();
 var link3DArr = new Array();
 var linkArr = new Array();
-
+var height = document.body.clientHeight;//獲得瀏覽器高度
 function imageRequest(categoryNo){ //搜尋stl檔
 	
 	var xhr = new XMLHttpRequest;
 	nameArr.length = 0;
 	link3DArr.length = 0;
 	linkArr.length = 0;
+	var category=document.getElementById('category');
+	var returnCategory=document.getElementById('return-category');
+	var arrowleft=document.getElementById('arrowleft');
+	var arrowright=document.getElementById('arrowright');
+
 	
-	document.getElementById('category').style.display='none';
-	document.getElementById('return-category').style.display='block';
-	document.getElementById('arrow').style.display='block';
+
+	category.style.display='none';
+	returnCategory.style.display='block';
+	arrowleft.style.display='block';
+	arrowright.style.display='block';
+
+	returnCategory.style.top=height-600+'px';
+	arrowleft.style.top=height-600+'px';
+	arrowright.style.top=height-600+'px';
+	
+
+	
+	document.getElementById('clickfooter').style.display='none';
+	
 	console.log(categoryNo);
 	xhr.onreadystatechange = function(){
 		
@@ -1847,7 +2117,7 @@ function footerBuilder(){
 	var categoryimg=document.getElementById('categoryimg');
 	var ul= document.createElement("ul");
 	console.log(linkArr.length);
-
+	categoryimg.addEventListener('onmosedown',moveimg,false);
 	for(var i=0;i<linkArr.length ;i++){
 		
 		var li= document.createElement("li");
@@ -1864,6 +2134,9 @@ function footerBuilder(){
 		ul.appendChild(li);
 		categoryimg.appendChild(ul);
 		box.setAttribute("onclick","stlcreat('"+link3DArr[i]+"')"); 
+
+		
+		categoryimg.style.top=height-600+'px';
 		
 	}
 
@@ -1872,9 +2145,12 @@ function returnCategory(){
 	document.getElementById('category').style.display='block';
 	document.getElementById('return-category').style.display='none';
 	document.getElementById('categoryimg').innerHTML="";
-	document.getElementById('arrow').style.display='none';
+	document.getElementById('arrowleft').style.display='none';
+	document.getElementById('arrowright').style.display='none';
 	document.getElementById("count").value=0;
 	document.getElementById('categoryimg').style.webkitTransform = "translateX(0px)";
+	document.getElementById('clickfooter').style.display='block';
+	
 }
 var count;
 
@@ -1960,3 +2236,7 @@ function keyboardMove(e)
 	
 }
 /*stl keyboard move end*/
+/*move img*/
+function moveimg(){
+	
+}

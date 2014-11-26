@@ -127,7 +127,6 @@
 			color:#ffffff;
 			font-size:12;
 			font-family:微軟正黑體;
-			position:absolute;
 			margin-top:100px;
 			margin-left:-340px;
 			padding-top:15px;
@@ -152,6 +151,12 @@
 			padding-right:15px;
 			padding-left:15px;
 		}
+		
+		#controlPanel p{
+			margin-left:15px;
+			margin-right:15px;
+		}
+		
 		#clickControl{
 			position:absolute;
 			left:-137px;
@@ -288,6 +293,20 @@
 			 background:#ffffff;
 			color:#000000;
 		}
+		#cameraRotate{
+			background-color: #000000;
+			color: #999999;
+			border-radius: 5px;
+			cursor: pointer;
+			border-width:0px;
+			-webkit-transition: all .2s;
+			display: inline;
+			height:20;
+		}
+		#cameraRotate:hover{
+			 background:#ffffff;
+			color:#000000;
+		}
 		#outputthreeButton{
 			background-color: #000000;
 			color: yellow;
@@ -302,6 +321,22 @@
 			background:#ffffff;
 			color:#000000;
 		}
+		
+		#designer{
+			background-color: #000000;
+			color: yellow;
+			border-radius: 5px;
+			cursor: pointer;
+			border-width:0px;
+			-webkit-transition: all .2s;
+			display: inline;
+			height:20;
+		}
+		#designer:hover{
+			background:#ffffff;
+			color:#000000;
+		}
+			
 		#tutorial{
 			position:absolute;
 			width:800px;
@@ -371,47 +406,77 @@
 		}
 
 		
-		.modeloff1{
-			display:none;
-		}
-		.modeloff2{
-			display:none;
-		}
-		.modeloff3{
-			display:none;
-		}
-		.modeloff4{
-			display:none;
-		}
-		.modeloff5{
+		.modeloff{
 			display:none;
 		}
 		
-		h3{
+		#attribute h3{
 			font-size: 14px;
 			text-decoration: none;
 			-webkit-transition: all linear 0.15s;
 			transition: all linear 0.15s;
 			color:#0088A8;
 			cursor:pointer;
+			
 		}
 
-		h3:hover{
+		#attribute h3:hover{
 			color:#33CCFF;
 
 		}
 		/*sti import css*/
+		
+		#category_frame{
+			position:relative;
+			width:300px;
+			height:100px;
+			z-index:2;
+			color:#ffffff;
+			font-size:10;
+			font-family:微軟正黑體;
+			position:absolute;
+			margin-top:460px;/*11/26*/
+			margin-left:-340px;/*11/26*/
+			padding-top:15px;
+			padding-bottom:15px;
+			padding-right:15px;
+			padding-left:15px;
+			-webkit-transition: all 1s;
+			float:top;
+			*left:-340;/*11/26*/
+			*top:80%;/*11/26*/
+
+		}
+		
+		#clickfooter{
+			position:absolute;
+			right:-137px;
+			top:42px;
+			height:50px;
+			width:150px;
+			background:black;
+			opacity:0.7;
+			-webkit-transform:rotateZ(90deg);
+			padding-top:30px;
+			padding-bottom:15px;
+			padding-right:15px;
+			padding-left:15px;
+			font-size:25;
+			cursor: pointer;
+		}
+		
+		#clickfooter:hover{
+			opacity:1;
+		}
+		
 		#footer{
 			height: 100px;
 			background-color: #000;
 			opacity: 0.8;
-			*width: 1000px;	
 			position: absolute;
-			top: 86%;
 			margin: 	0 auto;
-			*left: -1360px;
-			*-webkit-transition: all 1s;
-
+			font-family: "Microsoft JhengHei";
+			top:-1px;
 		}
 		#footer li {
 			list-style: none;
@@ -423,6 +488,8 @@
 		#categoryimg  {
 			padding-left: 10px;
 			padding-right: 50px;
+			position: absolute;/*11/26*/
+			top: 70%;/*11/26*/
 		}
 		#categoryimg ul  {
 			overflow: hidden; 
@@ -441,9 +508,21 @@
 			width: 233px;
 			
 		}
-		#footer img{
+		#footer span{
 			width: 150px;
+			font-size: 16px;
+			text-decoration: none;
+			-webkit-transition: all linear 0.15s;
+			transition: all linear 0.15s;
+			color:#fff;
+			cursor:pointer;
+			*padding:10px;
 		}
+		
+		#footer span:hover{
+			color:#fed116;
+		}
+		
 		#box{
 			position: relative;
 			*opacity: 0.6;
@@ -472,40 +551,67 @@
 		}
 		#return-category{
 			position: absolute;
-			width: 20px;
+			width: 30px;
 			float: left;
 			display: none;
 			cursor: pointer;
 			color: #fff;
 			background: #000;
 			z-index: 555;
-			height: 100px;
-			top: 86%;
 			opacity: 0.8;
+			font-family: "Microsoft JhengHei";
+			font-size:20px;
+			font-weight:bold;
+			margin:10px;
+			top: 70%;/*11/26*/
 		}
-		#arrow{
+		#arrowleft{
+			position:absolute;
 			display: none;
-			
-		}
-		#arrow div{
-			float: left;
-			position: absolute;
 			top: 25%;
+			*z-index:-1;
 		}
-		#arrow div:hover{
+
+		#arrowleft div:hover{
 			cursor: pointer;
 		}
-		#arrow img{
+		#arrowleft img{
 			width: 20px ;
 			height: 50px ;
 		}
-		.next{
-			left: 1360px;
-			z-index: 555;
+		#arrowright{
+			position:absolute;
+			display: none;
+			top: 25%;
+			
+			*z-index:-1;
 		}
-		.pre{
-			left: 3%;
-			z-index: 555;
+
+		#arrowright div:hover{
+			cursor: pointer;
+		}
+		#arrowright img{
+			width: 20px ;
+			height: 50px ;
+		}
+		.arrownext{
+			
+			float:right;
+			*margin-right:50px;
+			margin-left: -20px;
+			*z-index: 555;
+		}
+		.arrowpre{
+			*top:-400px;
+			float:left;
+			margin-left:50px;
+			*z-index: 555;
 
 		}
+		
+		.clear{
+			clear:both;
+		}
+		
+
 		/*end stl impor css*/

@@ -103,7 +103,7 @@
 				<div id="textmodel" class="textmodel" onclick="return CollapseExpand1()">
 					<h3>3D 文字</h3>
 				</div>
-				<div id="modeloff1" class="modeloff1">	
+				<div id="modeloff1" class="modeloff">	
 					<hr>
 					3D 文字：  <input type='text' id='custom' class ='threeText'  placeholder="請輸入英文"/><p>
 					文字尺寸： <input type='text' id='textSize' class ='threeText'  value='20' size='3'/>
@@ -122,7 +122,7 @@
 				<div id="stampmodel" class="stampmodel" onclick="return CollapseExpand2()">
 					<h3>印章模型</h3>
 				</div>
-				<div id="modeloff2" class="modeloff2">	
+				<div id="modeloff2" class="modeloff">	
 					<hr>
 					印章文字：<input type='text' id='stampText' class ='threeText' size="8" placeholder="請輸入英文"/>&nbsp &nbsp
 					文字尺寸：<input type='text' id='stampTextSize' class ='threeText'  size="4"/><p>
@@ -138,7 +138,7 @@
 				<div id="paintmodel" class="paintmodel" onclick="return CollapseExpand3()">
 					<h3>3D手繪模式</h3>
 				</div>
-				<div id="modeloff3" class="modeloff3">	
+				<div id="modeloff3" class="modeloff">	
 					<hr>
 					3D手繪模式：&nbsp &nbsp <input type='button'  id='3dpaint' class ='threeButton' value='開啟' style="width:180px;" onclick=" reStart(); "/><p>
 					<span id='painter'>筆刷粗細</span> &nbsp &nbsp <input type="range" name="rangeInput" min="1" max="5" step="2" onchange="painterCustomize(this.value)" style="width:200px; " ><p>                                                       
@@ -154,127 +154,147 @@
 				<div id="othermodel" class="othermodel" onclick="return CollapseExpand4()">
 					<h3>其他3D模型</h3>
 				</div>
-				<div id="modeloff4" class="modeloff4">
+				<div id="modeloff4" class="modeloff">
 					<hr>
 					<input type='button'  class ='threeButton' value='環面結' onclick='torusCreator();'/>&nbsp &nbsp
-					<input type='button' class ='threeButton' value='圓球' onclick='sphereCreator();' />&nbsp &nbsp
-					<input type='button'  id='minecraft' class ='threeButton' value='MineCraft' onclick=" voxelPainter(); " onmouseover="over();" onmouseout="out();"/><p>
+					<input type='button' class ='threeButton' value='圓球' onclick='sphereCreator();' />&nbsp &nbsp <p>
+					方塊寬度：<input type='text' id='voxelLength' class ='threeText'  size="2"/>cm &nbsp &nbsp
+					<input type='button'  id='minecraft' class ='threeButton' value='MineCraft' onclick=" voxelPainter(); " onmouseover="over();" onmouseout="out();" style="width:100px;"/><p>
 				</div>
 				<hr>
 				<div id="housemodel" class="housemodel" onclick="return CollapseExpand5()">
 					<h3>房屋</h3>
 				</div>
-				<div id="modeloff5" class="modeloff5">
+				<div id="modeloff5" class="modeloff">
 					<hr>
-					<input type='button' class ='threeButton' value='室內瀏覽模式' id='designer' onclick='failDesigner();' />&nbsp &nbsp
+					
 					<input type='button' class ='threeButton' value='椅子' onclick='chair();' />&nbsp &nbsp
 					<input type='button' class ='threeButton' value='桌子' onclick='desk();' />&nbsp &nbsp 
-					<input type='button' class ='threeButton' value='房屋牆壁' onclick='wall();' />&nbsp &nbsp  
-					<input type='button' class ='threeButton' value='房屋屋頂' onclick='roof();' />&nbsp &nbsp  
-					<input type='button' class ='threeButton' value='門' onclick='door();' />&nbsp &nbsp
+					<input type='button' class ='threeButton' value='牆壁' onclick='wall();' />&nbsp &nbsp  
+					<input type='button' class ='threeButton' value='屋頂' onclick='roof();' />&nbsp &nbsp  
 					<input type='button' class ='threeButton' value='窗戶' id='window'onclick='windowMaker();' />&nbsp &nbsp
-					<input type='button' class ='threeButton' value='刪除物件' onclick="movementProject('delete')" />&nbsp &nbsp  <p>
-					房屋高度：<input type='text' id='houseHeight' class ='threeText'  size="1"/>
-					房屋寬度：<input type='text' id='houseWidth' class ='threeText'  size="1"/>
-					房屋長度：<input type='text' id='houseLength' class ='threeText'  size="1"/>
-					<input type='button' class ='threeButton' value='房屋結構' onclick='foundation();' />&nbsp &nbsp
-					<input type='button' class ='threeButton' value='樹' id='tree' onclick='addTree();' /></br>
+					<input type='button' class ='threeButton' value='種樹' id='tree' onclick='addTree();' />
+					  <p>
+					房高：<input type='text' id='houseHeight' class ='threeText'  size="1"/>
+					房寬：<input type='text' id='houseWidth' class ='threeText'  size="1"/>
+					房長：<input type='text' id='houseLength' class ='threeText'  size="1"/>
+					<input type='button' class ='threeButton' value='房屋結構' onclick='foundation();' />&nbsp &nbsp <p>
+					
 					柵欄寬度：<input type='text' id='fenceLength' class ='threeText' size="1"/>
-					<input type='button' class ='threeButton' value='新增柵欄' id='fence' onclick='fence();' />&nbsp &nbsp
+					<input type='button' class ='threeButton' value='新增柵欄' id='fence' onclick='fence();' />&nbsp &nbsp <p>
+					&nbsp <input type='button' class ='threeButton' value='室內瀏覽模式' id='designer' onclick='failDesigner();' style="width:280px;"/>&nbsp &nbsp <p>
+					
+					<hr>
 				</div>
-				<br/><input type='button' id ='outputthreeButton' value='輸出3D圖檔' onclick='save();' style="width:180px; "/> &nbsp
-				<input type='button' class ='threeButton' value='清除畫面' onclick='clearObject();' style="width:100px;"/>
-				
-				
+				<br/> &nbsp
+				<input type='button' class ='threeButton' value='清除畫面' onclick='clearObject();' style="width:130px;"/>&nbsp &nbsp &nbsp
+				<input type='button' class ='threeButton' value='刪除物件' onclick="movementProject('delete')"  style="width:130px;"/><p>
+				 
+				&nbsp <input type='button' id ='outputthreeButton' value='輸出3D圖檔' onclick='save();' style="width:190px; "/> &nbsp
+				<input type='button'  class ='threeButton' id="cameraRotate" value='觀看物件' onclick="cameraLock()" style="width:80px;"/>
 				
 			</div>
 			
 			<div id ="controlPanel">
 				<div id='clickControl'>Advanced</div>
 				<div class = 'controlBackground'></div>
-				<div id="ControlTitle"><h1>進階控制</h1></div>
+				<div id="ControlTitle"><h2>進階控制</h2></div>
 				
 				Translate：<p>
-				<input type='button' class ='threeButton' value='X+' onclick="movementProject('translatePX')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='X-' onclick="movementProject('translateNX')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('translatePY')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('translateNY')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('translatePZ')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('translateNZ')" style="width:100px;"/> <p>
+				<input type='button' class ='threeButton' value='X+' onclick="movementProject('translatePX')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X-' onclick="movementProject('translateNX')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X軸歸零' onclick="movementProject('translate0X')" style="width:80px;"/> <p>
+				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('translatePY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('translateNY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y軸歸零' onclick="movementProject('translate0Y')" style="width:80px;"/> <p>
+				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('translatePZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('translateNZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z軸歸零' onclick="movementProject('translate0Z')" style="width:80px;"/><p>
 				
 				<hr>
 				Rotation：<p>
-				<input type='button' class ='threeButton' value='X+' onclick="movementProject('rotatePX')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='X-' onclick="movementProject('rotateNX')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('rotatePY')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('rotateNY')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('rotatePZ')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('rotateNZ')" style="width:100px;"/><p>
-				
+				<input type='button' class ='threeButton' value='X+' onclick="movementProject('rotatePX')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='X-' onclick="movementProject('rotateNX')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='X軸歸零' onclick="movementProject('rotate0X')" style="width:80px;"/> <p>
+				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('rotatePY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('rotateNY')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='Y軸歸零' onclick="movementProject('rotate0Y')" style="width:80px;"/> <p>
+				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('rotatePZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('rotateNZ')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='Z軸歸零' onclick="movementProject('rotate0Z')" style="width:80px;"/> <p>
 				
 				<hr>
 				Scale：<p>
-				<input type='button' class ='threeButton' value='X+' onclick="movementProject('scalePX')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='X-' onclick="movementProject('scaleNX')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('scalePY')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('scaleNY')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('scalePZ')" style="width:100px;"/>
-				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('scaleNZ')" style="width:100px;"/><p>
+				<input type='button' class ='threeButton' value='X+' onclick="movementProject('scalePX')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X-' onclick="movementProject('scaleNX')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X軸還原' onclick="movementProject('scale0X')" style="width:80px;"/> <p>
+				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('scalePY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('scaleNY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y軸還原' onclick="movementProject('scale0Y')" style="width:80px;"/> <p>
+				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('scalePZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('scaleNZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z軸還原' onclick="movementProject('scale0Z')" style="width:80px;"/> <p>
 				
-			
+				
 			</div>
 			
 			
 			<div id ="stlViewer">
 				<div id='clickSTL'>STL Viewer</div>
 				<div class = 'background'></div>
-				<div id="stlTitle"><h1>STL 3D預覽</h1></div>
+				<div id="stlTitle"><h2>STL 3D預覽</h2></div>
 				<div id="stlRenderer"></div>
 				<input type='button'  id='print' class ='threeButton' value='確認列印' onclick='printButton();' onmouseover="hoverPrint();"  onmouseout='outPrint();'/>
 			</div>
 			<!--stl import-->
-			<div id="return-category" type=button onclick="returnCategory();">回類別</div>
-			<div id="footer">
-				
-				<div id="category" >
-					<ul>
-						<li type=button onclick='imageRequest(1);'>
-							<img src="img/category/toy_dark.png" name="type1" onmouseout="this.src='img/category/toy_dark.png'" onmouseover="this.src='img/category/toy_ bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(2);'>
-							<img src="img/category/doll_dark.png" name="type2" onmouseout="this.src='img/category/doll_dark.png'" onmouseover="this.src='img/category/doll_bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(3);'>
-							<img src="img/category/clothing_dark.png" name="type3" onmouseout="this.src='img/category/clothing_dark.png'" onmouseover="this.src='img/category/clothing_bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(4);'>
-							<img src="img/category/parts_dark.png" name="type4" onmouseout="this.src='img/category/parts_dark.png'" onmouseover="this.src='img/category/parts_bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(6);'>
-							<img src="img/category/buding_dark.png" name="type6" onmouseout="this.src='img/category/buding_dark.png'" onmouseover="this.src='img/category/buding_bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(7);'>
-							<img src="img/category/art_dark.png" name="type7" onmouseout="this.src='img/category/art_dark.png'" onmouseover="this.src='img/category/art_bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(8);' >
-							<img src="img/category/supplies_dark.png" name="type8" onmouseout="this.src='img/category/supplies_dark.png'" onmouseover="this.src='img/category/supplies_bright.png'">
-						</li>
-						<li type=button onclick='imageRequest(9);'>
-							<img src="img/category/customization_dark.png" name="type9" onmouseout="this.src='img/category/customization_dark.png'" onmouseover="this.src='img/category/customization_bright.png'">
-						<!--<li type=button onclick='imageRequest(10);'>
-							<img src="img/category/special_dark.png" name="type10" onmouseout="this.src='img/category/special_dark.png'" onmouseover="this.src='img/category/special_bright.png'">
-						</li>-->
-					</ul>
-				</div>
-				<div id="categoryimg"></div>
-				<div id="arrow">
-					<div class="pre" id='pre' onclick='pre();'>
-						<img src="img/leftarrowD.png" onmouseout="this.src='img/leftarrowD.png'" onmouseover="this.src='img/leftarrowL.png'">
-						
+			
+			<div id="category_frame">	
+				<div id='clickfooter'>Category</div>
+				<div id="footer">
+					<div id="return-category" type=button onclick="returnCategory();">回類別</div>
+					<div id="category" >
+						<ul>
+							<li type=button onclick='imageRequest(1);'>
+								<span>玩具</span>
+							</li>
+							<li type=button onclick='imageRequest(2);'>
+								<span>公仔</span>
+							</li>
+							<li type=button onclick='imageRequest(3);'>
+								<span>服飾</span>
+							</li>
+							<li type=button onclick='imageRequest(4);'>
+								<span>零件</span>
+							</li>
+							<li type=button onclick='imageRequest(6);'>
+								<span>建築</span>
+							</li>
+							<li type=button onclick='imageRequest(7);'>
+								<span>藝術設計</span>
+							</li>
+							<li type=button onclick='imageRequest(8);' >
+								<span>生活用品</span>
+							</li>
+							<li type=button onclick='imageRequest(9);'>
+								<span>客製化</span>
+							<!--<li type=button onclick='imageRequest(10);'>
+								<img src="img/category/special_dark.png" name="type10" onmouseout="this.src='img/category/special_dark.png'" onmouseover="this.src='img/category/special_bright.png'">
+							</li>-->
+						</ul>
 					</div>
-					<div class="next" id="next" onclick='next();'>
-						<img src="img/rightarrowD.png" onmouseout="this.src='img/rightarrowD.png'" onmouseover="this.src='img/rightarrowL.png'">
-						<input type="hidden" id="count" name="count" value="0">
+					<div id="categoryimg"></div>
+					<div id="arrowleft">
+						<div class="arrowpre" id='pre' onclick='pre();'>
+							<img src="img/leftarrowD.png" onmouseout="this.src='img/leftarrowD.png'" onmouseover="this.src='img/leftarrowL.png'">
+						</div>
+					</div>
+					<div id="arrowright">
+						<div class="arrownext" id="next" onclick='next();'>
+							<img src="img/rightarrowD.png" onmouseout="this.src='img/rightarrowD.png'" onmouseover="this.src='img/rightarrowL.png'">
+							<input type="hidden" id="count" name="count" value="0">
+							<div class="clear"></div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -292,23 +312,26 @@
 			//fixbar左右補齊
 			document.getElementById("fixbarleft").style.width = (document.getElementById("headerlink").clientWidth-1140)/2 + "px";
 			document.getElementById("fixbarright").style.width = (document.getElementById("headerlink").clientWidth-1140)/2 + "px";
+			document.getElementById("arrowright").style.left = (document.getElementById("headerlink").clientWidth)-50 + "px";
+			//document.getElementById("footer").style.width = (document.getElementById("headerlink").clientWidth) + "px";
 			var aaa = document.getElementById("fixbarright").style.width;
+			
 			//暫時先用這種智障方法...
 			var divID1 = "modeloff1";
 		function CollapseExpand1() {
 			var divObject = document.getElementById(divID1);
 			console.log(divObject);
 			var currentCssClass = divObject.className;
-			if (divObject.className == "modelon1"){
+			if (divObject.className == "modelon"){
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
-					divObject.className = "modeloff1";
+					divObject.className = "modeloff";
 				}, 100);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
-					divObject.className = "modelon1";
+					divObject.className = "modelon";
 				}, 100);  
 			}
 		}
@@ -317,16 +340,16 @@
 			var divObject = document.getElementById(divID2);
 			console.log(divObject);
 			var currentCssClass = divObject.className;
-			if (divObject.className == "modelon2"){
+			if (divObject.className == "modelon"){
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
-					divObject.className = "modeloff2";
+					divObject.className = "modeloff";
 				}, 100);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
-					divObject.className = "modelon2";
+					divObject.className = "modelon";
 				}, 100);  
 			}
 		}
@@ -335,16 +358,16 @@
 			var divObject = document.getElementById(divID3);
 			console.log(divObject);
 			var currentCssClass = divObject.className;
-			if (divObject.className == "modelon3"){
+			if (divObject.className == "modelon"){
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
-					divObject.className = "modeloff3";
+					divObject.className = "modeloff";
 				}, 100);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
-					divObject.className = "modelon3";
+					divObject.className = "modelon";
 				}, 100);  
 			}
 		}
@@ -353,16 +376,16 @@
 			var divObject = document.getElementById(divID4);
 			console.log(divObject);
 			var currentCssClass = divObject.className;
-			if (divObject.className == "modelon4"){
+			if (divObject.className == "modelon"){
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
-					divObject.className = "modeloff4";
+					divObject.className = "modeloff";
 				}, 100);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
-					divObject.className = "modelon4";
+					divObject.className = "modelon";
 				}, 100);  
 			}
 		}
@@ -371,19 +394,21 @@
 			var divObject = document.getElementById(divID5);
 			console.log(divObject);
 			var currentCssClass = divObject.className;
-			if (divObject.className == "modelon5"){
+			if (divObject.className == "modelon"){
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
-					divObject.className = "modeloff5";
+					divObject.className = "modeloff";
 				}, 100);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
-					divObject.className = "modelon5";
+					divObject.className = "modelon";
 				}, 100);  
 			}
 		}
+
+		
 		</script>
 	
 	</body>

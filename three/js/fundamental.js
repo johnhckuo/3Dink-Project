@@ -14,6 +14,7 @@ var extended = false , lastTarget , controlExtended=false;
 var checkPrint = 0;
 var firstPersoncontrols;
 var cameraSphere;
+var rotation = 0;
 function $(id){
 	return document.getElementById(id);
 }
@@ -40,7 +41,7 @@ function init() {
     var VIEW_ANGLE = 45, ASPECT = window.innerWidth/window.innerHeight, NEAR = 0.1, FAR = 20000;
     camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene.add(camera);
-    camera.position.set(0,100,200);
+    camera.position.set(0,300,700);
 	
 	//var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30,opacity:0, transparent:true});
 	var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 30});
@@ -153,7 +154,7 @@ function init() {
 	}  */
 //	THREE.GeometryUtils.merge(geometryMerge, textMesh[0]);                     // --------------------STL converter modified
 	//plane create
-	var size = 200,step = 10;
+	var size = 250,step = 25;
 	
 	var geometry = new THREE.PlaneGeometry(size*2,size*2 );
 	var material = new THREE.MeshPhongMaterial({color: 0x000000,side: THREE.DoubleSide,transparent:true , opacity:0} );
@@ -164,8 +165,8 @@ function init() {
 	plane.rotation.x=Math.PI*1.5;     
 	
 	var geometry= new THREE.Geometry();
-	var material = new THREE.LineBasicMaterial({color:0x666666});
-	//var material = new THREE.LineBasicMaterial({color:0xffffff});
+	//var material = new THREE.LineBasicMaterial({color:0x666666});
+	var material = new THREE.LineBasicMaterial({color:0xffffff});
 		for (var i = -size ; i<=size ; i+=step){
 			geometry.vertices.push(new THREE.Vector3(-size , -0.04 , i));
 			geometry.vertices.push(new THREE.Vector3(size , -0.04 , i));
@@ -186,7 +187,7 @@ function init() {
 	
 	
 	//skybox
-/*	
+
 	var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );	
 	
 	
@@ -218,7 +219,7 @@ function init() {
 	scene.add( skyBox );
 	
 	
-*/
+
 	
 	// create the particle variables
 	
@@ -267,21 +268,40 @@ scene.add(particleSystem);
 	
 //	renderer.domElement.addEventListener('dblclick', lockDown , false);
 	renderer.domElement.addEventListener('click', lockDown , false);
-	
 	window.addEventListener( 'resize', onWindowResize, false );
 	
 	document.getElementById("clickMe").addEventListener("click" , extendPanel , false);
 	document.getElementById("clickSTL").addEventListener("click" , extendPanel , false);
+	document.getElementById("clickfooter").addEventListener("click" , extendPanel , false);	
 	document.getElementById("clickControl").addEventListener("click" , extendControl , false);
 	document.getElementById("tutorial").setAttribute("style","-webkit-transform:translateY(100px)");
+	
 }
 
 
 function stopTutorial(){
 	var temp = document.getElementById("tutorial");
-	temp.setAttribute("style","-webkit-transform:translateY(1000px)");
-	setTimeout(function(){ temp.style.display='none';},3000);
-		
+	temp.setAttribute("style","opacity:0");
+	setTimeout(function(){ temp.style.display='none';},2000);
+	
+	var isInFullScreen = (document.fullScreenElement && document.fullScreenElement !==     null) ||    // alternative standard method  
+            (document.mozFullScreen || document.webkitIsFullScreen);
+
+    var docElm = document.documentElement;
+    if (!isInFullScreen) {
+
+        if (docElm.requestFullscreen) {
+            docElm.requestFullscreen();
+        }
+        else if (docElm.mozRequestFullScreen) {
+            docElm.mozRequestFullScreen();
+        //    alert("Mozilla entering fullscreen!");
+        }
+        else if (docElm.webkitRequestFullScreen) {
+            docElm.webkitRequestFullScreen();
+      //      alert("Webkit entering fullscreen!");
+        }
+    }
 }
 	
 
@@ -289,9 +309,11 @@ function extendPanel(event){
 	if (event.target.parentNode.id == lastTarget && extended){
 		document.getElementById("attribute").setAttribute("style","-webkit-transform:translateX(0px)");
 		document.getElementById("stlViewer").setAttribute("style","-webkit-transform:translateX(0px)");
+		document.getElementById("category_frame").setAttribute("style","-webkit-transform:translateX(0px)");
 	}else{
 		document.getElementById("attribute").setAttribute("style","-webkit-transform:translateX(-65px)");
 		document.getElementById("stlViewer").setAttribute("style","-webkit-transform:translateX(-65px)");
+		document.getElementById("category_frame").setAttribute("style","-webkit-transform:translateX(-65px)");
 		document.getElementById(event.target.parentNode.id).setAttribute("style","-webkit-transform:translateX(365px)");
 	}
 	extended = !extended;
@@ -397,10 +419,14 @@ function startExport(){
 function animate() {
 	window.requestAnimationFrame( animate );
 	stats.update();
+	if (cameraFlag != null && cameraFlag == 1){
+		rotation += 0.005;
+		camera.position.x = targetObject.position.x + Math.sin(rotation) * 200;
+		camera.position.z = targetObject.position.z + Math.cos(rotation) * 200;
+	}
 //	var clock = new THREE.Clock();
 //	var delta = clock.getDelta();
 	controls.update(); //for cameras
-	
 	renderer.render( scene, camera );
 }
 function hoverPrint(){

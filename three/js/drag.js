@@ -39,6 +39,7 @@
 		//			alert(index);
 					for (var index in objects){
 						if (SELECTED.name == objects[index].name){
+							
 							SELECTED.position.y += objectOffset[index];
 							break;
 						}
@@ -108,7 +109,6 @@
 			
 			function lockDown(event){
 				event.preventDefault();			
-				
 				var vectorDrag = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
 				projector.unprojectVector( vectorDrag, camera );
 
@@ -136,4 +136,37 @@
 					}
 				}
 			
-			} 
+			}
+
+			function voxelLock(event){
+				event.preventDefault();			
+				
+				var vectorDrag = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
+				projector.unprojectVector( vectorDrag, camera );
+
+				var raycaster = new THREE.Raycaster( camera.position, vectorDrag.sub( camera.position ).normalize() );
+				var intersects = raycaster.intersectObjects( voxel );
+			/*	if (intersects.length>0){
+					controls.enabled = false;	
+					var index = intersects[0].object.name.split('.')[1];
+					objects.splice(index,1);
+					objectOffset.splice(index,1);
+					scene.remove(intersects[0].object);
+				}  */
+
+				if (intersects.length>0){
+					if (targetObject!=null){
+						targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
+					}
+					targetObject = intersects[0].object;
+					targetObject.material.color.setHex(0xff0000); // there is also setHSV and setRGB
+				}
+				else{
+					if (targetObject!=null){
+						targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
+						targetObject = null;
+					}
+				}
+			
+			}
+				
