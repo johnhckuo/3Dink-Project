@@ -157,7 +157,10 @@
 				<div id="modeloff4" class="modeloff">
 					<hr>
 					<input type='button'  class ='threeButton' value='環面結' onclick='torusCreator();'/>&nbsp &nbsp
-					<input type='button' class ='threeButton' value='圓球' onclick='sphereCreator();' />&nbsp &nbsp <p>
+					<input type='button' class ='threeButton' value='圓球' onclick='sphereCreator();' />&nbsp &nbsp 
+					<input type='button' class ='threeButton' value='圓柱' onclick='cylinder();' />&nbsp &nbsp 
+					<input type='button' class ='threeButton' value='管子' onclick='shape();' />&nbsp &nbsp 
+					<input type='button' class ='threeButton' value='環面' onclick='torus();' />&nbsp &nbsp <p>
 					方塊寬度：<input type='text' id='voxelLength' class ='threeText'  size="2"/>cm &nbsp &nbsp
 					<input type='button'  id='minecraft' class ='threeButton' value='MineCraft' onclick=" voxelPainter(); " onmouseover="over();" onmouseout="out();" style="width:100px;"/><p>
 				</div>
@@ -313,7 +316,7 @@
 			document.getElementById("fixbarleft").style.width = (document.getElementById("headerlink").clientWidth-1140)/2 + "px";
 			document.getElementById("fixbarright").style.width = (document.getElementById("headerlink").clientWidth-1140)/2 + "px";
 			document.getElementById("arrowright").style.left = (document.getElementById("headerlink").clientWidth)-50 + "px";
-			//document.getElementById("footer").style.width = (document.getElementById("headerlink").clientWidth) + "px";
+			//document.getElementById("categoryimg").style.width = (document.getElementById("headerlink").clientWidth) + "px";
 			var aaa = document.getElementById("fixbarright").style.width;
 			
 			//暫時先用這種智障方法...

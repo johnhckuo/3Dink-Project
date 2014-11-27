@@ -269,7 +269,7 @@ scene.add(particleSystem);
 //	renderer.domElement.addEventListener('dblclick', lockDown , false);
 	renderer.domElement.addEventListener('click', lockDown , false);
 	window.addEventListener( 'resize', onWindowResize, false );
-	
+	window.addEventListener('keydown',keyboardMove,false); 
 	document.getElementById("clickMe").addEventListener("click" , extendPanel , false);
 	document.getElementById("clickSTL").addEventListener("click" , extendPanel , false);
 	document.getElementById("clickfooter").addEventListener("click" , extendPanel , false);	
@@ -298,7 +298,7 @@ function stopTutorial(){
         //    alert("Mozilla entering fullscreen!");
         }
         else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen();
+            docElm.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
       //      alert("Webkit entering fullscreen!");
         }
     }
@@ -368,7 +368,7 @@ function save() {
 		loading(1);
 		var stl = startExport();
 		var blob = new Blob([stl], {type: 'text/plain'});
-		saveAs(blob, filename);                                            //Download File?
+	//	saveAs(blob, filename);                                            //Download File?
 		
 		formData.append("file", blob ,filename);
 		var xhr = new XMLHttpRequest();

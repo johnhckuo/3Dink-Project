@@ -115,7 +115,7 @@ function stamp(){
 	
 	var textSize = document.getElementById('stampTextSize').value;
 	var text = document.getElementById('stampText').value;
-	var length = 50;
+	var length = cm(5);
 	var textColor=0xdddddd, height=3 ,textFont='helvetiker';
 	var textMaterial = new THREE.MeshPhongMaterial({
 				color: textColor
@@ -195,7 +195,7 @@ function logoCreator(cube_bsp,height){
 }
 
 function torusCreator(){
-	var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
+	var geometry = new THREE.TorusKnotGeometry( 25, 3, 100, 25 );
 	var material = new THREE.MeshPhongMaterial( {ambient: 0xff5533, color:0xffffff, specular: 0x111111, shininess: 200 } );
 	var torusKnot = new THREE.Mesh( geometry, material );
 	torusKnot.position.set(0,0,0);
@@ -207,7 +207,7 @@ function torusCreator(){
 function sphereCreator(){
 	var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 200});
 
-	var objectRadius = 10;
+	var objectRadius = 25;
 	var segments = 8;
 
 	var sphereGeometry = new THREE.SphereGeometry( objectRadius, 32, 32 );		
@@ -219,6 +219,52 @@ function sphereCreator(){
 //	currentOffset = objectRadius;
 }
 
+function cylinder(){
+	var geometry = new THREE.CylinderGeometry( 25, 25, 75, 32 );
+	var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 200});
+	var cylinder = new THREE.Mesh( geometry, material );
+	sumCreator(cylinder,75/2);
+}
+
+function shape(){
+
+	var CustomSinCurve = THREE.Curve.create(
+    function ( scale ) { //custom curve constructor
+        this.scale = (scale === undefined) ? 1 : scale;
+    },
+    
+    function ( t ) { //getPoint: t is between 0-1
+        var tx = t * 3 - 1.5,
+            ty = Math.sin( 2 * Math.PI * t ),
+            tz = 0;
+        
+        return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
+    }
+	);
+
+	var path = new CustomSinCurve( 10 );
+
+	var geometry = new THREE.TubeGeometry(
+		path,  //path
+		20,    //segments
+		5,     //radius
+		50,     //radiusSegments
+		false  //closed
+	);
+	var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 200});
+	var mesh = new THREE.Mesh( geometry, material );
+	sumCreator(mesh , 0); 
+}
+
+function torus(){
+
+	var geometry = new THREE.TorusGeometry( 25, 3, 16, 100 );
+	var material = new THREE.MeshPhongMaterial({ambient: 0xffff00, color: 0xffffff, specular: 0x555555, shininess: 200});
+	var torus = new THREE.Mesh( geometry, material );
+	sumCreator(torus , 0); 
+
+
+}
 function ringCreator(){
 	var stl_bsp, text_bsp , STLGeometry;
 	var loader = new THREE.STLLoader();
@@ -412,7 +458,7 @@ function reStart(){
 			
 			var size = 200,step = 10;
 			var geometry= new THREE.Geometry();
-			var material = new THREE.LineBasicMaterial({color:'red'});
+			var material = new THREE.LineBasicMaterial({color: 0x000000,side: THREE.DoubleSide,transparent:true , opacity:0});
 			for (var i = -size ; i<=size ; i+=step){
 				geometry.vertices.push(new THREE.Vector3(-size , -0.04 , i));
 				geometry.vertices.push(new THREE.Vector3(size , -0.04 , i));
@@ -1877,6 +1923,14 @@ function movementProject(movement){
 							objectOffset.splice(i,1);
 						}
 					}
+					
+					for (var i in voxel){
+						if (targetObject.name == voxel[i].name){
+							voxel.splice(i,1);
+							voxelCoordinate.splice(i,1);
+						}
+					}
+	
 				}
 				break;
 
@@ -2001,7 +2055,9 @@ function cameraLock(){
 }
 
 
-
+function cm(px){
+	return px*25;
+}
 /*stl import*/
 function stlCreator(object,offset){
 	voxelFlag = 1;
@@ -2041,7 +2097,7 @@ function stlcreat(path) {
 	
 	} );
 		loader.load( '../showMode/'+path);
-		window.addEventListener('keydown',keyboardMove,false); 
+		
 
 }
 var nameArr = new Array();

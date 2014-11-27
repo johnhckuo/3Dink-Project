@@ -485,11 +485,15 @@
 			margin-top: 15px;
 
 		}
+		
+		
 		#categoryimg  {
 			padding-left: 10px;
 			padding-right: 50px;
 			position: absolute;/*11/26*/
 			top: 70%;/*11/26*/
+			background:#000;
+
 		}
 		#categoryimg ul  {
 			overflow: hidden; 
@@ -568,8 +572,7 @@
 		#arrowleft{
 			position:absolute;
 			display: none;
-			top: 25%;
-			*z-index:-1;
+			margin-top:30px;
 		}
 
 		#arrowleft div:hover{
@@ -582,9 +585,7 @@
 		#arrowright{
 			position:absolute;
 			display: none;
-			top: 25%;
-			
-			*z-index:-1;
+			margin-top:30px;
 		}
 
 		#arrowright div:hover{
