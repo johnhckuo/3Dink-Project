@@ -6,10 +6,10 @@ function $(id){
 function init(){
 
 
-  $("second").addEventListener("drop",drop,false);
-  $("second").addEventListener("dragenter",dragenter,false);
-  $("second").addEventListener("dragleave",dragleave,false);
-  $("second").addEventListener("dragover",dragover,false);
+  $("first").addEventListener("drop",drop,false);
+  $("first").addEventListener("dragenter",dragenter,false);
+  $("first").addEventListener("dragleave",dragleave,false);
+  $("first").addEventListener("dragover",dragover,false);
 
 
   /*$("physical").addEventListener("drop",drop,false);

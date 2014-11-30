@@ -302,8 +302,44 @@ function stopTutorial(){
       //      alert("Webkit entering fullscreen!");
         }
     }
+	showHelp();
 }
-	
+
+function showHelp(){
+	document.getElementById('helper').style.opacity = 1;
+}
+
+function hideHelp(){
+	document.getElementById('helper').style.opacity = 0;
+	setTimeout(function(){document.getElementById('helper').style.display='none';} ,1000);
+}
+
+function showbasicHelp(){
+	var helper = document.getElementById('helper');
+	var helperback = document.getElementById('helperback');
+	var content2 = document.getElementById("helperContent2");
+	var content = document.getElementById("helperContent");
+					
+		
+	helper.style.opacity = 1;
+	helperback.style.opacity = .7;
+	helper.style.height = 145;
+	if (content.className == 'show'){
+		document.getElementById("helperContent2").innerHTML = "<h2>歡迎來到3Dink繪圖系統</h2>1. 點選左邊的面板以生成3D模型。<p>2. 若右上角效能偵測指數低於50fps，請查看連線品質。<p>3. 本系統紅色軸線為X軸，黃色為Y軸，藍色為Z軸，虛線則為該軸負值區域。";
+		document.getElementById("helperContent2").style.opacity = 1;
+		document.getElementById("helperContent").style.opacity = 0;
+		content.className = 'hide';
+		content2.className = 'show';
+	}
+	else{
+		document.getElementById("helperContent2").innerHTML = "<h2>歡迎來到3Dink繪圖系統</h2>1. 點選左邊的面板以生成3D模型。<p>2. 若右上角效能偵測指數低於50fps，請查看連線品質。<p>3. 本系統紅色軸線為X軸，黃色為Y軸，藍色為Z軸，虛線則為該軸負值區域。";
+		document.getElementById("helperContent").style.opacity = 1;
+		document.getElementById("helperContent2").style.opacity = 0;
+		content.className = 'show';
+		content2.className = 'hide';
+	}
+				
+}
 
 function extendPanel(event){
 	if (event.target.parentNode.id == lastTarget && extended){
@@ -322,7 +358,7 @@ function extendPanel(event){
 
 function extendControl(event){
 	if (!controlExtended){
-		document.getElementById("controlPanel").setAttribute("style","-webkit-transform:translateX(-365px)");
+		document.getElementById("controlPanel").setAttribute("style","-webkit-transform:translateX(-305px)");
 	}else{
 		document.getElementById("controlPanel").setAttribute("style","-webkit-transform:translateX(0px)");
 	}

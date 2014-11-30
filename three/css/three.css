@@ -1,7 +1,7 @@
 		#helper{
 			position:absolute;
 			width:300px;
-			height:105px;
+			height:145px;
 		
 			
 			z-index:2;
@@ -17,6 +17,7 @@
 			padding-left:15px;
 			border-radius: 5px;
 			-webkit-transition: all 1s;
+			opacity:0;
 			
 		}
 		#helperback{
@@ -32,6 +33,13 @@
 			border-radius: 5px;
 		}
 		#helperContent{
+			position:absolute;
+			
+			-webkit-transition: all 1s;
+			color:#000;
+		}
+		#helperContent2{
+			position:absolute;
 			-webkit-transition: all 1s;
 			color:#000;
 		}
@@ -39,6 +47,17 @@
 			position:absolute;
 			top:10px;
 			right:10px;
+			width:20px;
+			height:20px;
+			cursor:pointer;
+			z-index:10;
+		}
+		#delete img{
+			position:absolute;
+			top:0px;
+			right:0px;
+			width:20px;
+			height:20px;
 			cursor:pointer;
 		}
 		hr {
@@ -106,6 +125,7 @@
 			padding-left:15px;
 			font-size:25;
 			cursor: pointer;
+			text-align:center;
 		}
 		#clickMe:hover{
 			opacity:1;
@@ -138,6 +158,7 @@
 			padding-left:15px;
 			font-size:25;
 			cursor: pointer;
+			text-align:center;
 		}
 		#clickSTL:hover{
 			opacity:1;
@@ -171,7 +192,7 @@
 			font-size:12;
 			font-family:微軟正黑體;
 			margin-top:100px;
-			margin-left:-340px;
+			margin-left:-330px;
 			padding-top:15px;
 			padding-bottom:15px;
 			padding-right:15px;
@@ -180,10 +201,10 @@
 		
 		#controlPanel{
 			position:absolute;
-			width:300px;
+			width:250px;
 			height:470px;
 			top:100px;
-			right:-340px;
+			right:-280px;
 			z-index:2;
 			-webkit-transition: all 1s;
 			color:#ffffff;
@@ -215,6 +236,7 @@
 			padding-left:15px;
 			font-size:25;
 			cursor: pointer;
+			text-align:center;
 		}
 		#clickControl:hover{
 			opacity:1;
@@ -269,7 +291,7 @@
 			font-family:微軟正黑體;
 			position:absolute;
 			margin-top:280px;
-			margin-left:-340px;
+			margin-left:-330px;
 			padding-top:15px;
 			padding-bottom:15px;
 			padding-right:15px;
@@ -456,9 +478,9 @@
 		#attribute h3{
 			font-size: 14px;
 			text-decoration: none;
-			-webkit-transition: all linear 0.15s;
+			-webkit-transition: all 0.1s;
 			transition: all linear 0.15s;
-			color:#99DD00;
+			color:#ffffff;
 			cursor:pointer;
 		}
 
@@ -477,7 +499,7 @@
 			font-family:微軟正黑體;
 			position:absolute;
 			margin-top:460px;/*11/26*/
-			margin-left:-340px;/*11/26*/
+			margin-left:-330px;/*11/26*/
 			padding-top:15px;
 			padding-bottom:15px;
 			padding-right:15px;
@@ -486,6 +508,7 @@
 			float:top;
 			*left:-340;/*11/26*/
 			*top:80%;/*11/26*/
+			text-align:center;
 
 		}
 		

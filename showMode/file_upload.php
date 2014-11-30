@@ -9,9 +9,9 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><!--自動refresh-->
 	<script>
 		//自動refresh
-		$(window).resize(function(){
-			window.location.reload();
-		  });
+	//	$(window).resize(function(){
+	//		window.location.reload();
+	//	  });
 	</script>
 	<style>
     body {
@@ -307,7 +307,7 @@
 			</form>
 		</div>
 	</div>
-<script type="text/javascript" src="js/drag2.js" ></script>
+
 <script src="js/three.js"></script>
 <script src="js/stats.js"></script>
 <script src="js/detector.js"></script>

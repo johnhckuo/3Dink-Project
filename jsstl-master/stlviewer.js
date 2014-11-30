@@ -1,5 +1,4 @@
-				var camera, scene, renderer,
-				geometry, material, mesh, light1, stats;
+				var camera, scene, renderer,geometry, material, mesh, light1, stats;
 				
 
         function $(id){
@@ -153,7 +152,7 @@
 						var material = new THREE.MeshPhongMaterial( { ambient: 0xff5533, color: 0xff5533, specular: 0x111111, shininess: 200 } );
 						mesh = new THREE.Mesh( geometry, material );
 						mesh.rotation.x+=Math.PI*1.5;
-						mesh.position.set( 0, -50, 0 );
+						mesh.position.set( 0, 0, 0 );
 						mesh.castShadow = true;
 						mesh.receiveShadow = true;
 						scene.add( mesh );
@@ -212,3 +211,4 @@
 
 				return false;
 			}
+			window.addEventListener("DOMContentLoaded", dragInit , false);

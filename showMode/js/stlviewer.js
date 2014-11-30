@@ -198,7 +198,8 @@
 					//light1.position.z -= 1;
 
 					renderer.render( scene, camera );
-					document.addEventListener( 'mousewheel' ,  zoom , false);
+					renderer.domElement.addEventListener( 'mousewheel' ,  zoom , false);
+				//	window.addEventListener( 'resize', onWindowResize, false );
 
 				}
 				function zoom(event){
@@ -214,6 +215,15 @@
 						
 				}
 
-					return false;
+					//return false;
+				}
+				
+				function onWindowResize() {
+
+					camera.aspect = window.innerWidth / window.innerHeight;
+					camera.updateProjectionMatrix();
+					renderer.setSize( window.innerWidth, window.innerHeight );
+
 				}
 				window.addEventListener("DOMContentLoaded", dragInit , false);
+				

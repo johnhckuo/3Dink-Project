@@ -106,11 +106,14 @@
 		
 		<div id='div1'>
 			<div id = 'helper'>
-				<div id = 'delete'><img src='img/delete.png' width='20' height='20'></img></div>
-				<div id = 'helperContent'>
+				<div id = 'delete' onclick='hideHelp()'><img src='img/delete.png' onclick='hideHelp()'></img></div>
+				<div id = 'helperContent' class="show">
 				<h2>歡迎來到3Dink繪圖系統</h2>
 				1. 點選左邊的面板以生成3D模型。<p>
-				2. 若右上角效能偵測指數低於50fps，請查看連線品質。
+				2. 若右上角效能偵測指數低於50fps，請查看連線品質。<p>
+				3. 本系統紅色軸線為X軸，黃色為Y軸，藍色為Z軸，虛線則為該軸負值區域。
+				</div>
+				<div id = 'helperContent2' class="hide">
 				</div>
 				<div id = 'helperback'></div>
 			</div>
@@ -228,51 +231,52 @@
 				<input type='button' class ='threeButton' value='清除畫面' onclick='clearObject();' style="width:130px;"/>&nbsp &nbsp &nbsp
 				<input type='button' class ='threeButton' value='刪除物件' onclick="movementProject('delete')"  style="width:130px;"/><p>
 		
-				&nbsp <input type='button' id ='outputthreeButton' value='輸出3D圖檔' onclick='save();' style="width:190px; "/> &nbsp
+				&nbsp <input type='button' id ='outputthreeButton' value='輸出3D圖檔' onclick='save();' style="width:270px; "/> &nbsp
 				
 				
 			</div>
 			
 			<div id ="controlPanel">
-				<div id='clickControl'>Advanced</div>
+				<div id='clickControl'>Advance</div>
 				<div class = 'controlBackground'></div>
 				<div id="ControlTitle"><h2>進階控制</h2></div>
 				
 				Translate：<p>
-				<input type='button' class ='threeButton' value='X+' onclick="movementProject('translatePX')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='X-' onclick="movementProject('translateNX')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X+' onclick="movementProject('translatePX')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X-' onclick="movementProject('translateNX')" style="width:60px;"/> &nbsp
 				<input type='button' class ='threeButton' value='X軸歸零' onclick="movementProject('translate0X')" style="width:80px;"/> <p>
-				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('translatePY')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('translateNY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('translatePY')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('translateNY')" style="width:60px;"/> &nbsp
 				<input type='button' class ='threeButton' value='Y軸歸零' onclick="movementProject('translate0Y')" style="width:80px;"/> <p>
-				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('translatePZ')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('translateNZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('translatePZ')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('translateNZ')" style="width:60px;"/> &nbsp
 				<input type='button' class ='threeButton' value='Z軸歸零' onclick="movementProject('translate0Z')" style="width:80px;"/><p>
 				
 				<hr>
 				Rotation：<p>
-				<input type='button' class ='threeButton' value='X+' onclick="movementProject('rotatePX')" style="width:80px;"/> &nbsp 
-				<input type='button' class ='threeButton' value='X-' onclick="movementProject('rotateNX')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='X+' onclick="movementProject('rotatePX')" style="width:60px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='X-' onclick="movementProject('rotateNX')" style="width:60px;"/> &nbsp 
 				<input type='button' class ='threeButton' value='X軸歸零' onclick="movementProject('rotate0X')" style="width:80px;"/> <p>
-				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('rotatePY')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('rotateNY')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('rotatePY')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('rotateNY')" style="width:60px;"/> &nbsp 
 				<input type='button' class ='threeButton' value='Y軸歸零' onclick="movementProject('rotate0Y')" style="width:80px;"/> <p>
-				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('rotatePZ')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('rotateNZ')" style="width:80px;"/> &nbsp 
+				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('rotatePZ')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('rotateNZ')" style="width:60px;"/> &nbsp 
 				<input type='button' class ='threeButton' value='Z軸歸零' onclick="movementProject('rotate0Z')" style="width:80px;"/> <p>
 				
 				<hr>
 				Scale：<p>
-				<input type='button' class ='threeButton' value='X+' onclick="movementProject('scalePX')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='X-' onclick="movementProject('scaleNX')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X+' onclick="movementProject('scalePX')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='X-' onclick="movementProject('scaleNX')" style="width:60px;"/> &nbsp
 				<input type='button' class ='threeButton' value='X軸還原' onclick="movementProject('scale0X')" style="width:80px;"/> <p>
-				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('scalePY')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('scaleNY')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y+' onclick="movementProject('scalePY')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Y-' onclick="movementProject('scaleNY')" style="width:60px;"/> &nbsp
 				<input type='button' class ='threeButton' value='Y軸還原' onclick="movementProject('scale0Y')" style="width:80px;"/> <p>
-				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('scalePZ')" style="width:80px;"/> &nbsp
-				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('scaleNZ')" style="width:80px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z+' onclick="movementProject('scalePZ')" style="width:60px;"/> &nbsp
+				<input type='button' class ='threeButton' value='Z-' onclick="movementProject('scaleNZ')" style="width:60px;"/> &nbsp
 				<input type='button' class ='threeButton' value='Z軸還原' onclick="movementProject('scale0Z')" style="width:80px;"/> <p>
-				
+				<input type='button' class ='threeButton' value='等比例放大' onclick="movementProject('scaleP')" style="width:100px;"/> &nbsp
+				<input type='button' class ='threeButton' value='等比例縮小' onclick="movementProject('scaleN')" style="width:100px;"/> &nbsp
 				
 			</div>
 			
@@ -362,16 +366,45 @@
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){
+			//	showbasicHelp();
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
 					divObject.className = "modeloff";
-				}, 100);  
+				}, 10);  
+				window.removeEventListener('keydown',keyboardMove,false); //zhen //清除移動圖檔
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
 					divObject.className = "modelon";
-				}, 100);  
+				}, 10);  
+			}
+			
+			
+			
+			
+			var helper = document.getElementById('helper');
+			var helperback = document.getElementById('helperback');
+			var content2 = document.getElementById("helperContent2");
+			var content = document.getElementById("helperContent");
+					
+		
+			helper.style.opacity = 1;
+			helperback.style.opacity = .7;
+			helper.style.height = 180;
+			if (content.className == 'show'){
+				document.getElementById("helperContent2").innerHTML = "<h2>3D文字模式教學</h2>此模式可建立英文單字的3D模型，操作流程如下：<p>1. 輸入文字的尺寸大小。<p> 2. 選擇文字厚度。<p>3. 選擇文字字體，目前系統僅支援英文字體。";
+				document.getElementById("helperContent2").style.opacity = 1;
+				document.getElementById("helperContent").style.opacity = 0;
+				content.className = 'hide';
+				content2.className = 'show';
+			}
+			else{
+				document.getElementById("helperContent").innerHTML = "<h2>3D文字模式教學</h2>此模式可建立英文單字的3D模型，操作流程如下：<p>1. 輸入文字的尺寸大小。<p> 2. 選擇文字厚度。<p>3. 選擇文字字體，目前系統僅支援英文字體。";
+				document.getElementById("helperContent").style.opacity = 1;
+				document.getElementById("helperContent2").style.opacity = 0;
+				content.className = 'show';
+				content2.className = 'hide';
 			}
 		}
 			var divID2 = "modeloff2";
@@ -380,16 +413,41 @@
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){
+			//	showbasicHelp();
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
 					divObject.className = "modeloff";
-				}, 100);  
+				}, 10);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
 					divObject.className = "modelon";
-				}, 100);  
+				}, 10);  
+			}
+			
+			var helper = document.getElementById('helper');
+			var helperback = document.getElementById('helperback');
+			var content2 = document.getElementById("helperContent2");
+			var content = document.getElementById("helperContent");
+					
+		
+			helper.style.opacity = 1;
+			helperback.style.opacity = .7;
+			helper.style.height = 105;
+			if (content.className == 'show'){
+				document.getElementById("helperContent2").innerHTML = "<h2>3D印章模式教學</h2>此模式可建立客製化的個人印章，請先輸入欲刻在印章上的文字，在按下「產生模型」即可完成。";
+				document.getElementById("helperContent2").style.opacity = 1;
+				document.getElementById("helperContent").style.opacity = 0;
+				content.className = 'hide';
+				content2.className = 'show';
+			}
+			else{
+				document.getElementById("helperContent").innerHTML = "<h2>3D印章模式教學</h2>此模式可建立客製化的個人印章，請先輸入欲刻在印章上的文字，在按下「產生模型」即可完成。";
+				document.getElementById("helperContent").style.opacity = 1;
+				document.getElementById("helperContent2").style.opacity = 0;
+				content.className = 'show';
+				content2.className = 'hide';
 			}
 		}
 			var divID3 = "modeloff3";
@@ -398,17 +456,44 @@
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){
+			//	showbasicHelp();
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
 					divObject.className = "modeloff";
-				}, 100);  
+				}, 10);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
 					divObject.className = "modelon";
-				}, 100);  
+				}, 10);  
 			}
+			
+			
+			var helper = document.getElementById('helper');
+			var helperback = document.getElementById('helperback');
+			var content2 = document.getElementById("helperContent2");
+			var content = document.getElementById("helperContent");
+					
+		
+			helper.style.opacity = 1;
+			helperback.style.opacity = .7;
+			helper.style.height = 270;
+			if (content.className == 'show'){
+				document.getElementById("helperContent2").innerHTML = "<h2>3D手繪模式教學</h2>試想像繪圖面板即為小畫家的畫布，而滑鼠便是筆刷，可直接進行3D圖檔的繪製，其操作流程為：<p>1. 依使用者喜好挑選筆刷粗細。<p>2. 按下「開啟」並進行創作。<p>3. 若要複製特定層數的作品至另外一層，請輸入來源層和目的層，如：複製0層至2層。<p>4. 複製功能又可分為多層複製和單層複製。<p>5. 結束繪畫後，請務必關閉3D手繪模式。<p>附註：3D手繪圖檔轉檔過程較為複雜，請耐心等候。";
+				document.getElementById("helperContent2").style.opacity = 1;
+				document.getElementById("helperContent").style.opacity = 0;
+				content.className = 'hide';
+				content2.className = 'show';
+			}
+			else{
+				document.getElementById("helperContent").innerHTML = "<h2>3D手繪模式教學</h2>試想像繪圖面板即為小畫家的畫布，而滑鼠便是筆刷，可直接進行3D圖檔的繪製，其操作流程為：<p>1. 依使用者喜好挑選筆刷粗細。<p>2. 按下「開啟」並進行創作。<p>3. 若要複製特定層數的作品至另外一層，請輸入來源層和目的層，如：複製0層至2層。<p>4. 複製功能又可分為多層複製和單層複製。<p>5. 結束繪畫後，請務必關閉3D手繪模式。<p>附註：3D手繪圖檔轉檔過程較為複雜，請耐心等候。";
+				document.getElementById("helperContent").style.opacity = 1;
+				document.getElementById("helperContent2").style.opacity = 0;
+				content.className = 'show';
+				content2.className = 'hide';
+			}
+			
 		}
 			var divID4 = "modeloff4";
 		function CollapseExpand4() {
@@ -416,17 +501,45 @@
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){
+			//	showbasicHelp();
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
 					divObject.className = "modeloff";
-				}, 100);  
+			//		showbasicHelp();
+				}, 10);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
 					divObject.className = "modelon";
-				}, 100);  
+				}, 10);  
 			}
+			
+			
+			var helper = document.getElementById('helper');
+			var helperback = document.getElementById('helperback');
+			var content2 = document.getElementById("helperContent2");
+			var content = document.getElementById("helperContent");
+					
+		
+			helper.style.opacity = 1;
+			helperback.style.opacity = .7;
+			helper.style.height = 170;
+			if (content.className == 'show'){
+				document.getElementById("helperContent2").innerHTML = "<h2>3D模型建置教學</h2>此模式提供使用者特定的圖形或基本輪廓，達到點綴裝飾的效果，其注意事項如下：<p>1. MineCraft模式開啟前，請先輸入方塊尺寸。<p>2. 產生出的3D模型，皆可透過右邊「Advance」面版進行進階控制。";
+				document.getElementById("helperContent2").style.opacity = 1;
+				document.getElementById("helperContent").style.opacity = 0;
+				content.className = 'hide';
+				content2.className = 'show';
+			}
+			else{
+				document.getElementById("helperContent").innerHTML = "<h2>3D模型建置教學</h2>此模式提供使用者特定的圖形或基本輪廓，達到點綴裝飾的效果，其注意事項如下：<p>1. MineCraft模式開啟前，請先輸入方塊尺寸。<p>2. 產生出的3D模型，皆可透過右邊「Advance」面版進行進階控制。";
+				document.getElementById("helperContent").style.opacity = 1;
+				document.getElementById("helperContent2").style.opacity = 0;
+				content.className = 'show';
+				content2.className = 'hide';
+			}
+			
 		}
 			var divID5 = "modeloff5";
 		function CollapseExpand5() {
@@ -434,16 +547,42 @@
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){
+			//	showbasicHelp();
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
 					divObject.className = "modeloff";
-				}, 100);  
+					
+				}, 10);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
 					divObject.className = "modelon";
-				}, 100);  
+				}, 10);  
+			}
+			
+			var helper = document.getElementById('helper');
+			var helperback = document.getElementById('helperback');
+			var content2 = document.getElementById("helperContent2");
+			var content = document.getElementById("helperContent");
+					
+		
+			helper.style.opacity = 1;
+			helperback.style.opacity = .7;
+			helper.style.height = 260;
+			if (content.className == 'show'){
+				document.getElementById("helperContent2").innerHTML = "<h2>3D房屋建置教學</h2>此模式針對模型玩家，提供基本室內模型的建置功能，其教學如下所示：<p>1. 種樹模式為裝飾房屋模型用，無法輸出成3D圖檔。<p>2. 欲建立房屋，請先輸入房屋的長、寬、高。<p>3. 「窗戶」模式僅允許使用者在「房屋」和「牆壁」上建置窗戶，建置完畢後請務必關閉「窗戶」模式。<p>4. 欲使用「柵欄」模式前，請先輸入柵欄長度。<p>5. 全部建置完成後，若使用者想以第一人稱視角瀏覽房屋內部結構，可使用「室內瀏覽模式」。";
+				document.getElementById("helperContent2").style.opacity = 1;
+				document.getElementById("helperContent").style.opacity = 0;
+				content.className = 'hide';
+				content2.className = 'show';
+			}
+			else{
+				document.getElementById("helperContent").innerHTML ="<h2>3D房屋建置教學</h2>此模式針對模型玩家，提供基本室內模型的建置功能，其教學如下所示：<p>1. 種樹模式為裝飾房屋模型用，無法輸出成3D圖檔。<p>2. 欲建立房屋，請先輸入房屋的長、寬、高。<p>3. 「窗戶」模式僅允許使用者在「房屋」和「牆壁」上建置窗戶，建置完畢後請務必關閉「窗戶」模式。<p>4. 欲使用「柵欄」模式前，請先輸入柵欄長度。<p>5. 全部建置完成後，若使用者想以第一人稱視角瀏覽房屋內部結構，可使用「室內瀏覽模式」。";
+				document.getElementById("helperContent").style.opacity = 1;
+				document.getElementById("helperContent2").style.opacity = 0;
+				content.className = 'show';
+				content2.className = 'hide';
 			}
 		}
 		
@@ -453,16 +592,43 @@
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){
+			//	showbasicHelp();
 				divObject.style.WebkitAnimationName = 'fadin';
 				setTimeout(function () {  
 					divObject.className = "modeloff";
-				}, 100);  
+					
+				}, 10);  
 			}
 			else{
 				divObject.style.WebkitAnimationName = 'fadout';
 				setTimeout(function () {  
 					divObject.className = "modelon";
-				}, 100);  
+				
+				}, 10);  
+			}
+			
+			var helper = document.getElementById('helper');
+			var helperback = document.getElementById('helperback');
+			var content2 = document.getElementById("helperContent2");
+			var content = document.getElementById("helperContent");
+					
+		
+			helper.style.opacity = 1;
+			helperback.style.opacity = .7;
+			helper.style.height = 260;
+			if (content.className == 'show'){
+				document.getElementById("helperContent2").innerHTML = "<h2>觀看角度調整教學</h2>此功能可允許使用者調整視角，並將之調整至最精確的位置，以方便後續繪圖建模的工作，其中需注意「360度觀看」模式開啟前，需先指定一特定物件，方可開啟。";
+				document.getElementById("helperContent2").style.opacity = 1;
+				document.getElementById("helperContent").style.opacity = 0;
+				content.className = 'hide';
+				content2.className = 'show';
+			}
+			else{
+				document.getElementById("helperContent").innerHTML =  "<h2>觀看角度調整教學</h2>此功能可允許使用者調整視角，並將之調整至最精確的位置，以方便後續繪圖建模的工作，其中需注意「360度觀看」模式開啟前，需先指定一特定物件，方可開啟。";
+				document.getElementById("helperContent").style.opacity = 1;
+				document.getElementById("helperContent2").style.opacity = 0;
+				content.className = 'show';
+				content2.className = 'hide';
 			}
 		}
 

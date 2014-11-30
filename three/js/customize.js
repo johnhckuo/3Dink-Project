@@ -195,7 +195,7 @@ function logoCreator(cube_bsp,height){
 }
 
 function torusCreator(){
-	var geometry = new THREE.TorusKnotGeometry( 25, 3, 100, 25 );
+	var geometry = new THREE.TorusKnotGeometry( 25, 5, 100, 25 );
 	var material = new THREE.MeshPhongMaterial( {ambient: 0xff5533, color:0xffffff, specular: 0x111111, shininess: 200 } );
 	var torusKnot = new THREE.Mesh( geometry, material );
 	torusKnot.position.set(0,0,0);
@@ -620,8 +620,35 @@ function voxelPainter(){
 		document.getElementById('minecraft').style.color="#ffffff";
 		document.getElementById('minecraft').style.background="red";
 		
-		window.removeEventListener( 'click', voxelLock, false );
-		
+		window.removeEventListener( 'click', lockDown, false );
+	//	renderer.domElement.removeEventListener( 'click', voxelLock, false );
+	
+	
+	
+	
+		var helper = document.getElementById('helper');
+		var helperback = document.getElementById('helperback');
+		var content2 = document.getElementById("helperContent2");
+		var content = document.getElementById("helperContent");
+				
+	
+		helper.style.opacity = 1;
+		helperback.style.opacity = .7;
+		helper.style.height = 200;
+		if (content.className == 'show'){
+			document.getElementById("helperContent2").innerHTML = "<h2>MineCraft模式教學</h2>此模式可運用小方塊堆疊出任何模型，操作流程如下：<p>1. 輸入方塊的尺寸大小。<p> 2. 按下「MineCraft」便能開始創作。<p>3. 欲結束MineCraft模式，請務必點擊「關閉MineCraft模式」選項。";
+			document.getElementById("helperContent2").style.opacity = 1;
+			document.getElementById("helperContent").style.opacity = 0;
+			content.className = 'hide';
+			content2.className = 'show';
+		}
+		else{
+			document.getElementById("helperContent").innerHTML = "<h2>MineCraft模式教學</h2>此模式可運用小方塊堆疊出任何模型，操作流程如下：<p>1. 輸入方塊的尺寸大小。<p> 2. 按下「MineCraft」便能開始創作。<p>3. 欲結束MineCraft模式，請務必點擊「關閉MineCraft模式」選項。";
+			document.getElementById("helperContent").style.opacity = 1;
+			document.getElementById("helperContent2").style.opacity = 0;
+			content.className = 'show';
+			content2.className = 'hide';
+		}
 	}else{
 		controls.enabled = true;
 		document.getElementById('minecraft').value="MineCraft";
@@ -631,7 +658,8 @@ function voxelPainter(){
 		scene.remove(pioneerCube);
 		document.getElementById('minecraft').style.color="#999999";
 		document.getElementById('minecraft').style.background="black";
-		window.addEventListener( 'click', voxelLock, false );
+		window.addEventListener( 'click', lockDown, false );
+	//	renderer.domElement.addEventListener( 'click', voxelLock, false );
 	}
 	voxelFlag=0;
 }
@@ -996,6 +1024,32 @@ function fence(){
 	
 function failDesigner(){
 
+
+
+	var helper = document.getElementById('helper');
+	var helperback = document.getElementById('helperback');
+	var content2 = document.getElementById("helperContent2");
+	var content = document.getElementById("helperContent");
+					
+	helper.style.opacity = 1;
+	helperback.style.opacity = .7;
+	helper.style.height = 180;
+	if (content.className == 'show'){
+		document.getElementById("helperContent2").innerHTML = "<h2>室內瀏覽模式</h2>此模式以第一人稱視角檢視物件，操作介紹如下：<p>1. 使用WASD控制移動方向。<p> 2. 使用滑鼠移動控制視角。<p>3. 開啟此模式後，點選滑鼠左鍵以正式開始瀏覽。<p>4. 欲恢復原瀏覽視角，請關閉此模式。";
+		document.getElementById("helperContent2").style.opacity = 1;
+		document.getElementById("helperContent").style.opacity = 0;
+		content.className = 'hide';
+		content2.className = 'show';
+	}
+	else{
+		document.getElementById("helperContent").innerHTML = "<h2>室內瀏覽模式</h2>此模式以第一人稱視角檢視物件，操作介紹如下：<p>1. 使用WASD控制移動方向。<p> 2. 使用滑鼠移動控制視角。<p>3. 開啟此模式後，點選滑鼠左鍵以正式開始瀏覽。<p>4. 欲恢復原瀏覽視角，請關閉此模式。";
+		document.getElementById("helperContent").style.opacity = 1;
+		document.getElementById("helperContent2").style.opacity = 0;
+		content.className = 'show';
+		content2.className = 'hide';
+	}
+			
+	var container = document.getElementById("div1");
 		
 	if (designFlag){
 		document.getElementById('designer').style.color="#ffffff";
@@ -1004,7 +1058,7 @@ function failDesigner(){
 		controls = new THREE.PointerLockControls( camera );
 		scene.add( controls.getObject() );
 		
-		window.removeEventListener('keydown',keyboardMove,false); //zhen //清除移動圖檔，讓室內瀏覽移動	
+		container.removeEventListener('keydown',keyboardMove,false); //zhen //清除移動圖檔，讓室內瀏覽移動	
 		designFlag = !designFlag;
 	}else{
 		document.getElementById('designer').style.color="#999999";
@@ -1031,7 +1085,7 @@ function failDesigner(){
 		 
 		controls.keys = [ 16, 17, 18 ]; // [ rotateKey, zoomKey, panKey ] 
 		
-		window.addEventListener('keydown',keyboardMove,false); //zhen 移動圖檔 
+		container.addEventListener('keydown',keyboardMove,false); //zhen 移動圖檔 
 		designFlag = !designFlag;
 	}
 }
@@ -1209,9 +1263,9 @@ function wall(){
 
 function foundation(){
 	
-	var houseHeight = document.getElementById("houseHeight").value;
-	var houseWidth = document.getElementById("houseWidth").value;
-	var houseLength = document.getElementById("houseLength").value;
+	var houseHeight = cm(document.getElementById("houseHeight").value);
+	var houseWidth = cm(document.getElementById("houseWidth").value);
+	var houseLength = cm(document.getElementById("houseLength").value);
 	var houseThick = 2;
 	
 	
@@ -1789,7 +1843,7 @@ function addWindow(event){
 function movementProject(movement){
 	var rotateStep = Math.PI/4;
 	var translateStep = 1;//zhen 5->1
-	var scaleStep = 2;
+	var scaleStep = 0.2;
 	
 	
 	
@@ -1910,6 +1964,19 @@ function movementProject(movement){
 				targetObject.scale.z = 1; 
 				break;
 				
+			case 'scaleP':
+				targetObject.scale.x += scaleStep; 
+				targetObject.scale.y += scaleStep; 
+				targetObject.scale.z += scaleStep; 
+				break;
+				
+			case 'scaleN':
+				targetObject.scale.x -= scaleStep; 
+				targetObject.scale.y -= scaleStep; 
+				targetObject.scale.z -= scaleStep; 
+				break;
+				
+				
 			case 'delete':
 				scene.remove(targetObject);
 				if (currentObject[0]){
@@ -1919,8 +1986,10 @@ function movementProject(movement){
 					}
 					for (var i in objects){
 						if (targetObject.name == objects[i].name){
-							objects.splice(i,1);
-							objectOffset.splice(i,1);
+							//objects.splice(i,1);
+							//objectOffset.splice(i,1);
+							objects[i] = '';
+							objectOffset[i] = '';
 						}
 					}
 					
@@ -1987,7 +2056,6 @@ function furnitureCreator(object,offset){
 	voxelFlag = 1;
 	paintFlag = 1;
 	
-	
 	object.position.set( 0,offset,0 );
 	object.name = "obj."+objectCount++;         //dot for string exploit
 	object.geometry.computeFaceNormals();
@@ -2005,7 +2073,7 @@ function doorCreator(object,x,y,z){
 	
 	object.geometry.computeBoundingBox();
 	var boundbox = object.geometry.boundingBox;
-	var offset = boundbox.max.y - boundbox.min.y;
+	var offset = boundbox.max.y;
 	offset /= 2;
 	object.position.set( x,offset,z );
 	
@@ -2119,7 +2187,7 @@ function stlcreat(path) {
 var nameArr = new Array();
 var link3DArr = new Array();
 var linkArr = new Array();
-var height = document.body.clientHeight;//獲得瀏覽器高度
+var height = document.body.clientHeight;//獲得高瀏覽器度
 function imageRequest(categoryNo){ //搜尋stl檔
 	
 	var xhr = new XMLHttpRequest;
@@ -2189,7 +2257,7 @@ function footerBuilder(){
 	var categoryimg=document.getElementById('categoryimg');
 	var ul= document.createElement("ul");
 	console.log(linkArr.length);
-	categoryimg.addEventListener('onmosedown',moveimg,false);
+	//categoryimg.addEventListener('onmosedown',moveimg,false);
 	for(var i=0;i<linkArr.length ;i++){
 		
 		var li= document.createElement("li");
@@ -2284,7 +2352,7 @@ function keyboardMove(e)
 			case 34: //Y-pagedown
 				movementProject('translateNY');
 				break;
-				/*旋轉*/
+				/*旋轉*//*
 				
 			case 65: //Y+A
 				movementProject('rotatePY');
@@ -2303,12 +2371,15 @@ function keyboardMove(e)
 				break;
 			case 69: //Z-E
 				movementProject('rotateNZ');
-				break;					
+				break;		*/			
 		}	
 	
 }
 /*stl keyboard move end*/
 /*move img*/
-function moveimg(){
-	
+function moving(){
+	var custom=document.getElementById('custom').value;
+	//window.addEventListener('keydown',keyboardMove,false);
+	console.log(custom++);
+
 }

@@ -38,8 +38,9 @@
 					var intersects = raycaster.intersectObjects(objects );
 		//			alert(index);
 					for (var index in objects){
+						console.log(objectOffset[index]);
+				
 						if (SELECTED.name == objects[index].name){
-							
 							SELECTED.position.y += objectOffset[index];
 							break;
 						}
@@ -109,6 +110,8 @@
 			
 			function lockDown(event){
 				event.preventDefault();			
+				
+				
 				var vectorDrag = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
 				projector.unprojectVector( vectorDrag, camera );
 
@@ -123,6 +126,9 @@
 				}  */
 				var helper = document.getElementById('helper');
 				var helperback = document.getElementById('helperback');
+				var content2 = document.getElementById("helperContent2");
+				var content = document.getElementById("helperContent");
+				
 				if (intersects.length>0){
 					if (targetObject!=null){
 						targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
@@ -132,7 +138,21 @@
 	
 					helper.style.opacity = 1;
 					helperback.style.opacity = .7;
-					document.getElementById("helperContent").innerHTML = "hi";
+					helper.style.height = 200;
+					if (content.className == 'show'){
+						document.getElementById("helperContent2").innerHTML = "<h2>物件進階設定</h2>物件呈現紅色表示已被選取，可進行以下進階操作：<p>1. 使用鍵盤↑↓←→可控制物件移動。<p>2. 按下DELETE可刪除物件。<p>3. 按下右邊Advance面板可進行更多設定。<p>4. 按下左邊Attribute中的「觀看角度」，可從更多角度欣賞您的作品。";
+						document.getElementById("helperContent2").style.opacity = 1;
+						document.getElementById("helperContent").style.opacity = 0;
+						content.className = 'hide';
+						content2.className = 'show';
+					}
+					else{
+						document.getElementById("helperContent").innerHTML = "<h2>物件進階設定</h2>物件呈現紅色表示已被選取，可進行以下進階操作：<p>1. 使用鍵盤↑↓←→可控制物件移動。<p>2. 按下DELETE可刪除物件。<p>3. 按下右邊Advance面板可進行更多設定。<p>4. 按下左邊Attribute中的「觀看角度」，可從更多角度欣賞您的作品。";
+						document.getElementById("helperContent").style.opacity = 1;
+						document.getElementById("helperContent2").style.opacity = 0;
+						content.className = 'show';
+						content2.className = 'hide';
+					}
 			//		helper.innerHTML="<h3>小提示</h3>選擇物件後，可針對該物件進行設定：<br/>
 		//			<ul>
 			//		<li>按下↑↓←→可進行移動，DELETE為刪除物件。</li>
@@ -141,9 +161,19 @@
 		//			</ul>";
 				}
 				else{
-					if (targetObject!=null){
-						targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
-						targetObject = null;
+					var intersects = raycaster.intersectObjects( voxel );
+					if (intersects.length>0){
+						if (targetObject!=null){
+							targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
+						}
+						targetObject = intersects[0].object;
+						targetObject.material.color.setHex(0xff0000); // there is also setHSV and setRGB
+					}
+					else{
+						if (targetObject!=null){
+							targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
+							targetObject = null;
+						}
 					}
 				}
 			
