@@ -56,7 +56,7 @@
 			}
 			
 			
-			a.href = "http://140.127.233.248/showMode/?no="+extendInfo[i].trim();
+			a.href = "http://140.127.218.199/showMode/?no="+extendInfo[i].trim();
 			
 			img.src = extendLink[i];
 			a.appendChild(img);

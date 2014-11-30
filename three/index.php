@@ -8,6 +8,23 @@
 		</style>
 	</head>
 	<body style="overflow-x: hidden;margin:0 0 0 0 ;background-color:#333333;">
+	<?php
+	session_start();
+		require_once("../db/dblogin.php");
+		require_once("../db/dbconnect.php");
+		$db=new DB();
+		$link=$db->connect_db($_DB['host'],$_DB['username'],$_DB['password'],$_DB['dbname']);
+		if( !isset($_SESSION['No']))
+		{
+			echo "<script language='javascript'>";
+			echo "alert('尚未登入，請重新登入');";	
+			echo "window.location.assign('/zhen/login.php');";
+			echo "</script>";
+			exit;
+			//header('../index.php');
+			//exit;
+		}
+	?>
 		<div class="navbar navbar-fixed-top" id='headerlink'>
 			<div class="navbar-inner" >
 			<div class='fixbarleft' id='fixbarleft'><img src='../img/fixbar_left.png'></div>
@@ -88,7 +105,15 @@
 		
 		
 		<div id='div1'>
-			
+			<div id = 'helper'>
+				<div id = 'delete'><img src='img/delete.png' width='20' height='20'></img></div>
+				<div id = 'helperContent'>
+				<h2>歡迎來到3Dink繪圖系統</h2>
+				1. 點選左邊的面板以生成3D模型。<p>
+				2. 若右上角效能偵測指數低於50fps，請查看連線品質。
+				</div>
+				<div id = 'helperback'></div>
+			</div>
 			<div id='loading'>
 				<img id="img1" src='img/loading.png' />
 			</div> 
@@ -186,15 +211,25 @@
 					柵欄寬度：<input type='text' id='fenceLength' class ='threeText' size="1"/>
 					<input type='button' class ='threeButton' value='新增柵欄' id='fence' onclick='fence();' />&nbsp &nbsp <p>
 					&nbsp <input type='button' class ='threeButton' value='室內瀏覽模式' id='designer' onclick='failDesigner();' style="width:280px;"/>&nbsp &nbsp <p>
-					
+
+				</div>
+				<hr>
+				<div id="camerawatch" class="camerawatch" onclick="return CollapseExpand6()">
+					<h3>觀看角度</h3>
+				</div>
+				<div id="modeloff6" class="modeloff">
+					<hr>					
+					<input type='button'  class ='threeButton' id="cameraRotate" value='從X軸' onclick="cameraLock('X')" style="width:60px;"/> &nbsp 
+					<input type='button'  class ='threeButton' id="cameraRotate" value='從Y軸' onclick="cameraLock('Y')" style="width:60px;"/> &nbsp 
+					<input type='button'  class ='threeButton' id="cameraRotate" value='從Z軸' onclick="cameraLock('Z')" style="width:60px;"/> &nbsp
+					<input type='button'  class ='threeButton' id="cameraRotate" value='360度觀看' onclick="cameraLock('rotate')" style="width:80px;"/>
 					<hr>
 				</div>
-				<br/> &nbsp
 				<input type='button' class ='threeButton' value='清除畫面' onclick='clearObject();' style="width:130px;"/>&nbsp &nbsp &nbsp
 				<input type='button' class ='threeButton' value='刪除物件' onclick="movementProject('delete')"  style="width:130px;"/><p>
-				 
+		
 				&nbsp <input type='button' id ='outputthreeButton' value='輸出3D圖檔' onclick='save();' style="width:190px; "/> &nbsp
-				<input type='button'  class ='threeButton' id="cameraRotate" value='觀看物件' onclick="cameraLock()" style="width:80px;"/>
+				
 				
 			</div>
 			
@@ -240,6 +275,7 @@
 				
 				
 			</div>
+			
 			
 			
 			<div id ="stlViewer">
@@ -395,6 +431,25 @@
 			var divID5 = "modeloff5";
 		function CollapseExpand5() {
 			var divObject = document.getElementById(divID5);
+			console.log(divObject);
+			var currentCssClass = divObject.className;
+			if (divObject.className == "modelon"){
+				divObject.style.WebkitAnimationName = 'fadin';
+				setTimeout(function () {  
+					divObject.className = "modeloff";
+				}, 100);  
+			}
+			else{
+				divObject.style.WebkitAnimationName = 'fadout';
+				setTimeout(function () {  
+					divObject.className = "modelon";
+				}, 100);  
+			}
+		}
+		
+			var divID6 = "modeloff6";
+		function CollapseExpand6() {
+			var divObject = document.getElementById(divID6);
 			console.log(divObject);
 			var currentCssClass = divObject.className;
 			if (divObject.className == "modelon"){

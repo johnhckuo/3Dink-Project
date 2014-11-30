@@ -121,13 +121,24 @@
 					objectOffset.splice(index,1);
 					scene.remove(intersects[0].object);
 				}  */
-
+				var helper = document.getElementById('helper');
+				var helperback = document.getElementById('helperback');
 				if (intersects.length>0){
 					if (targetObject!=null){
 						targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
 					}
 					targetObject = intersects[0].object;
 					targetObject.material.color.setHex(0xff0000); // there is also setHSV and setRGB
+	
+					helper.style.opacity = 1;
+					helperback.style.opacity = .7;
+					document.getElementById("helperContent").innerHTML = "hi";
+			//		helper.innerHTML="<h3>小提示</h3>選擇物件後，可針對該物件進行設定：<br/>
+		//			<ul>
+			//		<li>按下↑↓←→可進行移動，DELETE為刪除物件。</li>
+		//			<li>點選右邊的進階控制面板，有更多選擇。</li>
+		//			<li>點選Attribute中的「觀看角度」，可從精確的角度觀看物件。</li>
+		//			</ul>";
 				}
 				else{
 					if (targetObject!=null){

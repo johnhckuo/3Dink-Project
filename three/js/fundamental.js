@@ -408,7 +408,7 @@ function startExport(){
 
     exportGeo = removeDuplicateFaces( geometryMerge );
     //THREE.GeometryUtils.triangulateQuads( geometryMerge );
-	
+
     var stl = generateSTL();
 	if (convertFlag)
 		loading(0);

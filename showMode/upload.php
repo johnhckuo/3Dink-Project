@@ -19,6 +19,7 @@ if (isset($_POST["name"]) && isset($_POST["introduction"] )){
 	//創建資料夾
 	//$arr[6]=$_POST["create"]; 
 	$arr[6]=$_POST["folderName"];
+	$arr[7]=$_POST["creativeCommons"];//創用CC授權
 	
 /*	
 	for ($key=0 ; $key<2 ; $key++){   // change to 3 when physical is added
@@ -58,13 +59,31 @@ if (isset($_POST["name"]) && isset($_POST["introduction"] )){
 		$imageSize=$_POST["dragSize"];
 		$imageSize=(int)$imageSize;
 
+
+
 		if($_POST["create"]==1){	//是否創資料夾
 			$addsql="INSERT INTO personal_folder(`folderName`) VALUE ('$arr[6]')";
 			$result = $db->query($link,$addsql);	
 			$search= "SELECT folderNo FROM personal_folder WHERE folderName='$arr[6]' ORDER BY folderNo DESC LIMIT 1";
 			$result2 = $db->query($link,$search);	
 			$row= mysqli_fetch_row($result2);
+			//是否授權微創用CC
+			if($arr[7]==1){
+				$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  , `authorizePrice` ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' ,'-1', '$memberNo' , '$arr[1]','$row[0]')";// modify when physical is added  //
+				$result = $db->query($link,$sql);
+			}
+			else if($arr[7]==0){
+				if($arr[4]==1){
+					$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  , `authorizePrice` ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' ,'$arr[5]', '$memberNo' , '$arr[1]','$row[0]')";// modify when physical is added  //
+					$result = $db->query($link,$sql);
+				}
+				else if($arr[4]==0){
+					$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' , '$memberNo' , '$arr[1]','$row[0]')";// modify when physical is added
+					$result = $db->query($link,$sql);
+				}	
+			}
 			//作者是否授權
+			/*
 			if($arr[4]==1){
 				$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  , `authorizePrice` ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' ,'$arr[5]', '$memberNo' , '$arr[1]','$row[0]')";// modify when physical is added  //
 				$result = $db->query($link,$sql);
@@ -73,17 +92,23 @@ if (isset($_POST["name"]) && isset($_POST["introduction"] )){
 				$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' , '$memberNo' , '$arr[1]','$row[0]')";// modify when physical is added
 				$result = $db->query($link,$sql);
 				
-			}		
+			}	*/	
 		}
 		else if($_POST["create"]==0){
-			//作者是否授權
-			if($arr[4]==1){
-				$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  , `authorizePrice` ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' ,'$arr[5]', '$memberNo' , '$arr[1]','$arr[2]')";// modify when physical is added  //
+			if($arr[7]==1){
+				$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  , `authorizePrice` ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' ,'-1', '$memberNo' , '$arr[1]','$arr[2]')";// modify when physical is added  //
 				$result = $db->query($link,$sql);
 			}
-			else if($arr[4]==0){
-				$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' , '$memberNo' , '$arr[1]','$arr[2]')";// modify when physical is added
-				$result = $db->query($link,$sql);
+			else if($arr[7]==0){
+			//作者是否授權
+				if($arr[4]==1){
+					$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  , `authorizePrice` ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' ,'$arr[5]', '$memberNo' , '$arr[1]','$arr[2]')";// modify when physical is added  //
+					$result = $db->query($link,$sql);
+				}
+				else if($arr[4]==0){
+					$sql= "INSERT INTO platform(  `pictureNo` , `pictureName` ,  `3dimageLink` , `3dimageSize(kb)`,`2dimageLink`  ,  `productInfo` ,  `Score` ,  ` Hitrate`  ,`memberNo` , `categoryNo`, `personalFolderNo`)  VALUES ('','$arr[0]',  '$file[0]', '$imageSize', '$file[1]',  '$arr[3]',  '0',  '0' , '$memberNo' , '$arr[1]','$arr[2]')";// modify when physical is added
+					$result = $db->query($link,$sql);
+				}
 			}		
 		}
 	}

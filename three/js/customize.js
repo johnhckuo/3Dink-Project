@@ -2022,36 +2022,52 @@ function doorCreator(object,x,y,z){
 
 
 
-function cameraLock(){
-	event.preventDefault();			
-	if (targetObject == null){
-		alert("請指定物件");
-		return;
-	}
-	if (!cameraFlag){
-		cameraFlag = 1;
-		controls.target = targetObject.position;	
-		targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
-		document.getElementById("cameraRotate").value = "停止觀看物件";
-	//	camera.position.addScalar(targetObject.position);
-		document.getElementById('cameraRotate').style.color="#ffffff";
-		document.getElementById('cameraRotate').style.background="red";
-		controls.enabled = false;
-		
-	}else{
-		cameraFlag = 0;
-		targetObject = null;
-		controls.target = plane.position;	
-		document.getElementById("cameraRotate").value = "觀看物件";
-		camera.position.set(0,300,700);
-		rotation = 0;
-		document.getElementById('cameraRotate').style.color="#999999";
-		document.getElementById('cameraRotate').style.background="black";
-		controls.enabled = true;
-	}
-	//camera.lookAt();
-		
+function cameraLock(movement){
+	event.preventDefault();		
+	switch (movement){
+		case "rotate":
+			if (!targetObject){
+				alert("請指定物件");
+				return;
+			}
+			if (!cameraFlag){
+				cameraFlag = 1;
+				controls.target = targetObject.position;	
+				targetObject.material.color.setHex(0xffffff); // there is also setHSV and setRGB
+				document.getElementById("cameraRotate").value = "停止觀看物件";
+			//	camera.position.addScalar(targetObject.position);
+				document.getElementById('cameraRotate').style.color="#ffffff";
+				document.getElementById('cameraRotate').style.background="red";
+				controls.enabled = false;
+				
+			}else{
+				cameraFlag = 0;
+				targetObject = null;
+				controls.target = plane.position;	
+				document.getElementById("cameraRotate").value = "觀看物件";
+				camera.position.set(0,300,700);
+				rotation = 0;
+				document.getElementById('cameraRotate').style.color="#999999";
+				document.getElementById('cameraRotate').style.background="black";
+				controls.enabled = true;
+			}
 			
+		//camera.lookAt();
+			break;
+			
+		case "X":
+			controls.target = plane.position;
+			camera.position.set(500,0,0);
+			break;
+		case "Y":
+			controls.target = plane.position;
+			camera.position.set(0,500,0);
+			break;
+		case "Z":
+			controls.target = plane.position;
+			camera.position.set(0,0,500);
+			break;
+	}
 }
 
 

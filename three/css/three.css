@@ -1,3 +1,46 @@
+		#helper{
+			position:absolute;
+			width:300px;
+			height:105px;
+		
+			
+			z-index:2;
+			-webkit-transition: all 1s;
+			color:#ffffff;
+			font-size:12;
+			font-family:微軟正黑體;
+			bottom:80px;
+			right:80px;
+			padding-top:15px;
+			padding-bottom:15px;
+			padding-right:15px;
+			padding-left:15px;
+			border-radius: 5px;
+			-webkit-transition: all 1s;
+			
+		}
+		#helperback{
+			
+			position:absolute;
+			z-index:-1;
+			top:0px;
+			left:0px;
+			width:100%;
+			height:100%;
+			background:white;
+			opacity:0.7;
+			border-radius: 5px;
+		}
+		#helperContent{
+			-webkit-transition: all 1s;
+			color:#000;
+		}
+		#delete{
+			position:absolute;
+			top:10px;
+			right:10px;
+			cursor:pointer;
+		}
 		hr {
 			border: 0;
 			height: 1px;
@@ -415,14 +458,12 @@
 			text-decoration: none;
 			-webkit-transition: all linear 0.15s;
 			transition: all linear 0.15s;
-			color:#0088A8;
+			color:#99DD00;
 			cursor:pointer;
-			
 		}
 
 		#attribute h3:hover{
-			color:#33CCFF;
-
+			color:#77FF00;
 		}
 		/*sti import css*/
 		

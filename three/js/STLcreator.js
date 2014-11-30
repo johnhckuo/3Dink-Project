@@ -1,9 +1,9 @@
 function generateSTL(){
   var vertices = geometryMerge.vertices;
   var tris     = geometryMerge.faces;
-  
 
-  stl = "solid pixel";
+
+  stl = "solid model \n";
   for(var i = 0; i<tris.length; i++){
 	
     stl += ("facet normal "+stringifyVector( tris[i].normal )+" \n");

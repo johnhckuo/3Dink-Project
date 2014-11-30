@@ -211,13 +211,17 @@ function init (pictureNo,folderNo,categoryNo) {
 					temp.className='nonopa';
 					var text = document.createElement("div");
 					
-					if(authorizePicArr[i]!='')
+					if(authorizePicArr[i]!='' && authorizePicArr[i]!=-1)
 					{
 						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>3D圖授權：$"+authorizePicArr[i]+"</span>";
 					}
 					else if(authorizePicArr[i]=='')
 					{
 						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>3D圖授權：未授權</span>";
+					}
+					else if(authorizePicArr[i]==-1)
+					{
+						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>已授權為創用CC</span>";
 					}
 					$("info").appendChild(text);
 					$("text"+i).setAttribute("onclick","infoDrop()"); 
@@ -286,7 +290,7 @@ function initCalculate(){
 
 function printRequest(path){
 	path = "../showMode/"+path;
-	window.location.href="http://140.127.233.248/jsstl-master/index.php?path="+path;
+	window.location.href="../jsstl-master/index.php?path="+path;
 	
 }
 
@@ -322,13 +326,17 @@ function next(){
 					$("info").removeChild($("info").lastChild);
 					var text = document.createElement("div");
 					
-					if(authorizePicArr[i]!='')
+					if(authorizePicArr[i]!='' && authorizePicArr[i]!=-1)
 					{
 						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>3D圖授權：$"+authorizePicArr[i]+"</span>";
 					}
 					else if(authorizePicArr[i]=='')
 					{
 						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>3D圖授權：未授權</span>";
+					}
+					else if(authorizePicArr[i]==-1)
+					{
+						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>已授權為創用CC</span>";
 					}					
 					$("info").appendChild(text);
 					$("text"+i).setAttribute("onclick","infoDrop()");   
@@ -414,14 +422,18 @@ function previous(){
 					$("info").removeChild($("info").lastChild);
 					var text = document.createElement("div");
 					
-					if(authorizePicArr[i]!='')
+					if(authorizePicArr[i]!='' && authorizePicArr[i]!=-1)
 					{
 						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>3D圖授權：$"+authorizePicArr[i]+"</span>";
 					}
 					else if(authorizePicArr[i]=='')
 					{
 						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>3D圖授權：未授權</span>";
-					}					
+					}		
+					else if(authorizePicArr[i]==-1)
+					{
+						text.innerHTML="<span class='worksName'>"+nameArr[i]+"</span><span class='worksConcept'>設計理念</span><div class='worksInfo'>"+infoArr[i]+"</div><span class='worksAuthor'> 作者："+NicknameArr[i].link('../rockon40100/personal.php?memberNo='+memberNoArr[i])+"</span><span class='worksPermission'>已授權為創用CC</span>";
+					}			
 					$("info").appendChild(text);
 					$("text"+i).setAttribute("onclick","infoDrop()"); 
 					$("cube"+i).setAttribute("onclick","foldIn()"); 

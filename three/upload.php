@@ -9,7 +9,7 @@ if ($_FILES["file"]["error"] > 0) {
   echo "Stored in: " . $_FILES["file"]["tmp_name"];
   move_uploaded_file($_FILES["file"]["tmp_name"], "stl/" . $_FILES["file"]["name"]);
   
- // exec("/home/johnhckuo/Slic3r/slic3r.pl /var/www/three/uploads/".$_FILES["file"]["name"]);
+  exec("/home/johnhckuo/Slic3r/slic3r.pl /var/www/three/stl/".$_FILES["file"]["name"]);
 }
 
 //$namePieces = explode(".", $_FILES["file"]["name"]);
